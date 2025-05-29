@@ -4,5 +4,6 @@ using namespace std;
 
 void main()
 {
-	cout << "Jang Jaegeun abcdefe" << endl;
+	cout << "Jang" << endl;
+	cout << "123456" << endl;
 }

@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\\uC870\uACBD\uC7AC\\Documents\\GitHub\\13_test\\Test\\",
+  "WorkspaceRootPath": "C:\\Users\\Jangjak\\Desktop\\Git\\13_test\\Test\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{31B05D04-AD29-4FC9-A1EB-1D6D44534470}|13_test.vcxproj|C:\\Users\\\uC870\uACBD\uC7AC\\Documents\\GitHub\\13_test\\Test\\13_test.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{31B05D04-AD29-4FC9-A1EB-1D6D44534470}|13_test.vcxproj|C:\\Users\\Jangjak\\Desktop\\Git\\13_test\\Test\\13_test.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{31B05D04-AD29-4FC9-A1EB-1D6D44534470}|13_test.vcxproj|solutionrelative:13_test.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -20,11 +20,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "13_test.cpp",
-              "DocumentMoniker": "C:\\Users\\\uC870\uACBD\uC7AC\\Documents\\GitHub\\13_test\\Test\\13_test.cpp",
+              "DocumentMoniker": "C:\\Users\\Jangjak\\Desktop\\Git\\13_test\\Test\\13_test.cpp",
               "RelativeDocumentMoniker": "13_test.cpp",
-              "ToolTip": "C:\\Users\\\uC870\uACBD\uC7AC\\Documents\\GitHub\\13_test\\Test\\13_test.cpp",
+              "ToolTip": "C:\\Users\\Jangjak\\Desktop\\Git\\13_test\\Test\\13_test.cpp",
               "RelativeToolTip": "13_test.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-05-29T06:18:09.036Z",
               "EditorCaption": ""
