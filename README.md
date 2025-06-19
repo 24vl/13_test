@@ -65,5 +65,5 @@
         
    > 몬스터 Dragon 등장! 체력: 450, 공격력: 50
         Dragon이 Hero를 공격합니다! Hero 체력: 50 → 0
-        Hero가 사망했습니다. <span style="color: red">_게임오버!_</span>
+        Hero가 사망했습니다. <p>$\bf{\large{\color{#DD6565}필수기능가이드}}$</p>
         
