@@ -1,4 +1,5 @@
-# 13조 
+![header](https://capsule-render.vercel.app/api?type=wave&color=auto&height=300&section=header&text=1IDIOT3&fontSize=100) 
+
 ### CH 2 텍스트 기반 RPG 게임 제작 프로젝트
 - 3주간 배운 내용을 종합적으로 적용해서 간단한 RPG 게임을 만드는 프로젝트 입니다.
 - 주인공(플레이어)은 몬스터와 전투를 하거나 상점을 이용할 수 있으며, 전투가 시작되면 턴 방식으로 몬스터와 전투를 벌입니다. 이 때 주인공은 각 턴에 아이템을 사용하거나 공격을 할 수 있습니다. 이 과정들은 모두 직접 제어하지 않고 플레이어 혹은 몬스터의 HP가 0이 될 때까지 자동으로 진행됩니다.
