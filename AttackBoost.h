@@ -1,7 +1,10 @@
-﻿// Copyright Epic Games, Inc. All Rights Reserved.
+﻿#ifndef GameManager_H_
+#define GameManager_H_
 
 #include <iostream>
-#ifndef "Item.h"
+#include "Item.h"
+#include "Character.h"
+#include "Monster.h"
 #include <string>
 
 using namespace std;
