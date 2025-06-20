@@ -24,6 +24,6 @@ public:
 
     void use(Character* character)
     {
-    cout << character->use << "이럴 때 아이템!" << endl;
+    cout << character.use << "이럴 때 아이템!" << endl;
     }
 }
