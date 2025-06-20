@@ -17,7 +17,7 @@ using namespace std;
 
 class HealthPotion : public Item
 {
-private:
+protected:
     string name;
     int healthRestore;
 public:

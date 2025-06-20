@@ -17,7 +17,7 @@ using namespace std;
 
 class AttackBoost : public Item
 {
-private:
+protected:
     string name;
     int attackincrease;
 public:
