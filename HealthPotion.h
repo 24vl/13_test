@@ -18,10 +18,10 @@ using namespace std;
 class HealthPotion : public Item
 {
 protected:
-    string name;
-    int healthRestore;
+    string name = "체력 포션";
+    int healthRestore = 50;
 public:
-    HealthPotion()
+    HealthPotion(string name, int healthRestore) {}
 
     string getName()
     {
@@ -30,6 +30,6 @@ public:
 
     void use(Character* character)
     {
-    cout << character.use << "이럴 때 아이템!" << endl;
+    cout << character->use << "이럴 때 아이템!" << endl;
     }
 }

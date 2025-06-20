@@ -23,6 +23,7 @@ public:
     virtual string getName() = 0;
     virtual void use(Character* character) = 0;
     
+
     virtual ~Item() {};
 };
 
