@@ -3,6 +3,9 @@
 #include <iostream>
 #ifndef "item.h"
 #include <string>
+
+using namespace std;
+
 class HealthPotion : public Item
 {
 private:

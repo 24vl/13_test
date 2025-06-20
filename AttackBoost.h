@@ -3,6 +3,9 @@
 #include <iostream>
 #ifndef "Item.h"
 #include <string>
+
+using namespace std;
+
 class AttackBoost : public Item
 {
 private:

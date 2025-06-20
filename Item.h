@@ -4,6 +4,8 @@
 #ifndef
 #include <string>
 
+using namespace std;
+
 class Item
 {
 public:
