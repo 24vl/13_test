@@ -18,10 +18,14 @@ using namespace std;
 class HealthPotion : public Item
 {
 protected:
-    string name = "체력 포션";
-    int healthRestore = 50;
+    string name
+    int healthRestore
 public:
-    HealthPotion(string name, int healthRestore) {}
+    HealthPotion() 
+	{
+		name = "체력 포션";
+		healthRestore = 50;
+	}
 
     string getName()
     {
@@ -30,6 +34,7 @@ public:
 
     void use(Character* character)
     {
-    cout << character->use << "이럴 때 아이템!" << endl;
+    	character->useItem(0);
     }
+virtual ~HealthPotion;
 }

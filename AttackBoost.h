@@ -18,10 +18,14 @@ using namespace std;
 class AttackBoost : public Item
 {
 protected:
-    string name = "공격력 버프";
-    int attackincrease = 10;
+    string name;
+    int attackincrease;
 public:
-    AttackBoost(string name, int attackincrease) {}
+    AttackBoost() 
+	{
+		name = "공격력 버프";
+		attackincrease = 10;
+	}
 
     string getName()
     {
@@ -29,6 +33,7 @@ public:
     }
     void use(Character* character)
     {
-        cout << character->use << "이럴 때 아이템!" << endl;
+        character->useItem(0);
     }
+virtual ~AttackBoost;
 }
