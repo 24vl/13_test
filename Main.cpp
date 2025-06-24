@@ -73,15 +73,16 @@ int main()
 // 
 // 메인 메뉴  switch || while (if, else) [GameManager]
 // 
-// - 배틀 루프 [GameManager]
-// 루프 끝마다 사망 체크 break;
-// 캐릭터 사망 체크 [Character] -> bool type
+// 배틀 루프 [GameManager]
+//
+// 캐릭터 레벨업 대사 추가 [Character]
+// 캐릭터 공격 대사 추가
 // 
-// 캐릭터 takeDamage [Character]
-// 캐릭터 레벨업 대사 추가
+// 몬스터 공격 대사 추가 [Monstser]
+//
+// 캐릭터가 죽으면 처음으로 리셋 [GameManager]
 // 
-// takeDamage -> if hp < 0 => hp = 0; [Monster]
-// 사망 대사? 리뉴얼? // if == 0 [Monstser]
-// 캐릭터가 죽으면 처음으로 리셋
+// 상점 만들기 [Shop]
 // 
-// setGold() []
+// 꾸미기(?) 아스키 아트 사용
+// 
