@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <ctime>
 #include <cstdlib>
+#include <memory>
 
 #include "Item.h"
 
@@ -42,6 +43,9 @@ public:
     void setAttack(int newAttack);
     int getHealth();
     void setHealth(int newHealth);
+    void setExp(int num);
+    void setGold(int num);
+    bool takeDamage(int damage);
     ~Character();
 };
 

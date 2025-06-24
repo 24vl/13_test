@@ -1,6 +1,5 @@
 ﻿#include "Monster.h"
 
-
 //--- Student1
 string Student1::getName()
 {
@@ -14,19 +13,30 @@ int Student1::getHealth()
 {
 	return health;
 }
-void Student1::takeDamage(int damage)
+bool Student1::takeDamage(int damage)
 {
 	health -= damage;
-	cout << "남은 체력 : " << health << endl;
-	cout << "으악! 과제 그만!" << endl;
-}
-void Student1::checkDead()
-{
-	if (health <= 0)
+	if (health < 0) 
 	{
-		cout << name << "님이 내배캠을 탈주하였습니다." << endl;
+		health = 0;
+		cout << name << "이 과제에 쌓여 쓰러졌습니다.\n" << endl;
+		return true;
+	}
+	else
+	{
+		displayStatus();
+		cout << "\"으악! 과제 그만!\"" << endl;
+		return false;
 	}
 }
+
+void Student1::displayStatus()
+{
+	cout << "- " << getName() << " -" << endl;
+	cout << "공격력 : " << getAttack() << "   / 남은 체력 : " << getHealth() << endl;
+}
+
+
 
 //--- Student2
 string Student2::getName()
@@ -41,18 +51,27 @@ int Student2::getHealth()
 {
 	return health;
 }
-void Student2::takeDamage(int damage)
+bool Student2::takeDamage(int damage)
 {
 	health -= damage;
-	cout << "남은 체력 : " << health << endl;
-	cout << "흑흑 과제 그만주세요..." << endl;
-}
-void Student2::checkDead()
-{
-	if (health <= 0)
+	if (health < 0)
 	{
-		cout << name << "님이 내배캠을 탈주하였습니다." << endl;
+		health = 0;
+		cout << name << "이 과제에 쌓여 쓰러졌습니다.\n" << endl;
+		return true;
 	}
+	else
+	{
+		displayStatus();
+		cout << "\"으악! 과제 그만!\"" << endl;
+		return false;
+	}
+}
+
+void Student2::displayStatus()
+{
+	cout << "- " << getName() << " -" << endl;
+	cout << "공격력 : " << getAttack() << "   / 남은 체력 : " << getHealth() << endl;
 }
 
 
@@ -69,18 +88,27 @@ int Student3::getHealth()
 {
 	return health;
 }
-void Student3::takeDamage(int damage)
+bool Student3::takeDamage(int damage)
 {
 	health -= damage;
-	cout << "남은 체력 : " << health << endl;
-	cout << "아.. 하하.. 하하.." << endl;
-}
-void Student3::checkDead()
-{
-	if (health <= 0)
+	if (health < 0)
 	{
-		cout << name << "님이 내배캠을 탈주하였습니다." << endl;
+		health = 0;
+		cout << name << "이 과제에 쌓여 쓰러졌습니다.\n" << endl;
+		return true;
 	}
+	else
+	{
+		displayStatus();
+		cout << "\"으악! 과제 그만!\"" << endl;
+		return false;
+	}
+}
+
+void Student3::displayStatus()
+{
+	cout << "- " << getName() << " -" << endl;
+	cout << "공격력 : " << getAttack() << "   / 남은 체력 : " << getHealth() << endl;
 }
 
 
@@ -97,18 +125,27 @@ int Student4::getHealth()
 {
 	return health;
 }
-void Student4::takeDamage(int damage)
+bool Student4::takeDamage(int damage)
 {
 	health -= damage;
-	cout << "남은 체력 : " << health << endl;
-	cout << "어.. 해보겠습니다.." << endl;
-}
-void Student4::checkDead()
-{
-	if (health <= 0)
+	if (health < 0)
 	{
-		cout << name << "님이 내배캠을 탈주하였습니다." << endl;
+		health = 0;
+		cout << name << "이 과제에 쌓여 쓰러졌습니다.\n" << endl;
+		return true;
 	}
+	else
+	{
+		displayStatus();
+		cout << "\"으악! 과제 그만!\"" << endl;
+		return false;
+	}
+}
+
+void Student4::displayStatus()
+{
+	cout << "- " << getName() << " -" << endl;
+	cout << "공격력 : " << getAttack() << "   / 남은 체력 : " << getHealth() << endl;
 }
 
 
@@ -125,18 +162,27 @@ int Student5::getHealth()
 {
 	return health;
 }
-void Student5::takeDamage(int damage)
+bool Student5::takeDamage(int damage)
 {
 	health -= damage;
-	cout << "남은 체력 : " << health << endl;
-	cout << "네 주세요.." << endl;
-}
-void Student5::checkDead()
-{
-	if (health <= 0)
+	if (health < 0)
 	{
-		cout << name << "님이 내배캠을 탈주하였습니다." << endl;
+		health = 0;
+		cout << name << "이 과제에 쌓여 쓰러졌습니다.\n" << endl;
+		return true;
 	}
+	else
+	{
+		displayStatus();
+		cout << "\"으악! 과제 그만!\"" << endl;
+		return false;
+	}
+}
+
+void Student5::displayStatus()
+{
+	cout << "- " << getName() << " -" << endl;
+	cout << "공격력 : " << getAttack() << "   / 남은 체력 : " << getHealth() << endl;
 }
 
 
@@ -153,16 +199,25 @@ int Student6::getHealth()
 {
 	return health;
 }
-void Student6::takeDamage(int damage)
+bool Student6::takeDamage(int damage)
 {
 	health -= damage;
-	cout << "남은 체력 : " << health << endl;
-	cout << "과제 더 주세요! 성장하고 싶어요!" << endl;
-}
-void Student6::checkDead()
-{
-	if (health <= 0)
+	if (health < 0)
 	{
-		cout << name << "님이 내배캠을 탈주하였습니다." << endl;
+		health = 0;
+		cout << name << "이 과제에 쌓여 쓰러졌습니다.\n" << endl;
+		return true;
 	}
+	else
+	{
+		displayStatus();
+		cout << "\"으악! 과제 그만!\"" << endl;
+		return false;
+	}
+}
+
+void Student6::displayStatus()
+{
+	cout << "- " << getName() << " -" << endl;
+	cout << "공격력 : " << getAttack() << "   / 남은 체력 : " << getHealth() << endl;
 }

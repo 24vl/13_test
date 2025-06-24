@@ -18,11 +18,11 @@ void Character::setName(string n)
 
 void Character::displayStatus()
 {
-    cout << "Name: " << name << endl;
+    cout << " - " << name << " - " << endl;
     cout << "HP: " << health << "/" << maxHealth;
     cout << "     AD: " << attack << endl;
-    cout << "LV : " << level << endl;
-    cout << "Exp : " << experience << endl;
+    cout << "LV : " << level;
+    cout << "     Exp : " << experience << endl;
     cout << "Gold: " << gold << endl;
 }
 
@@ -65,6 +65,7 @@ void Character::useItem(int index)
     {
         Item* temp = Inventory[index];
         temp->use(this);
+        delete Inventory[index];
         Inventory.erase(Inventory.begin() + index);
     }
 }
@@ -90,6 +91,33 @@ void Character::setHealth(int newHealth)
     if (health > maxHealth)
     {
         health = maxHealth;
+    }
+}
+
+void Character::setExp(int num)
+{
+    experience += num;
+}
+
+void Character::setGold(int num)
+{
+    gold += num;
+}
+
+bool Character::takeDamage(int damage)
+{
+    health -= damage;
+
+    if (health <= 0)
+    {
+        cout << "다시 돌아오겠다.." << endl;
+        return true;
+    }
+    else
+    {
+        cout << "남은 체력 : " << health << endl;
+        cout << "\"으윽! 과제를 더 내주겠다!\"" << endl;
+        return false;
     }
 }
 

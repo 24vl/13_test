@@ -2,6 +2,7 @@
 #include "Item.h"
 #include "Character.h"
 #include "Monster.h"
+#include <iostream>
 
 class Monster;
 
@@ -48,7 +49,52 @@ Monster* GameManager::generateMonster(int level) // level = Character.getLevel()
 
 void GameManager::battle(Character* player)
 {
+    Monster* monster;
+    monster = generateMonster(player->getLevel());
+    cout << "!!!!! 야생의 " << monster->getName();
+    cout << "이 등장했다 !!!!!" << endl;
+    monster->displayStatus();
+    
+    while (true)
+    {
+        system("pause");
+        system("cls");
 
+        cout << "과제 투척!\n\n";
+        // 캐릭터 공격 대사 만들기
+        if (monster->takeDamage(player->getAttack()))
+        {
+            int r = rand();
+            if ((r % 100) < 30)
+            {
+                if (r % 2 == 0)
+                {
+                    HealthPotion* h = new HealthPotion;
+                    player->getItem(h);
+                    cout << "체력 포션 획득!" << endl;
+                }
+                else
+                {
+                    AttackBoost* a = new AttackBoost;
+                    player->getItem(a);
+                    cout << "공격력 포션 획득!" << endl;
+                }
+            }
+            player->setExp(50);
+            player->setGold(10 + 10 * (r % 2));
+            player->levelUp();
+            delete monster;
+            break;
+        }
+        cout << "반항하기!\n\n";
+        // 몬스터 공격 대사 만들기
+        if (player->takeDamage(monster->getAttack()))
+        {
+            break;
+        }
+        player->useItem(0);
+
+    }
 }
 
 void GameManager::displayInventory(Character* player)
@@ -56,13 +102,25 @@ void GameManager::displayInventory(Character* player)
     if (!player->getInventory().empty())
     {
         cout << "-- Inventory --" << endl;
-        for (Item* it : player->getInventory())
+        for (int i = 0; i < player->getInventory().size(); i++)
         {
-            cout << it->getName() << endl;
+            if (player->getInventory()[i] != nullptr)
+            {
+                cout << player->getInventory()[i]->getName() << endl;
+            }
         }
     }
     else
     {
-        cout << "Inventory is empty!" << endl;
+        cout << "-- Inventory --" << endl;
     }
+}
+
+void GameManager::menu(Character* player)
+{
+    system("cls");
+    cout << "1.전투     2.상점     3.종료\n\n";
+    player->displayStatus();
+    cout << "\n";
+    displayInventory(player);
 }

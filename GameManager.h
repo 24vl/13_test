@@ -23,7 +23,8 @@ public:
     Monster* generateMonster(int level);
     void battle(Character* player);
     void displayInventory(Character* player);
-    
+    void menu(Character* player);
+
 };
 
 
