@@ -94,14 +94,24 @@ void Character::setHealth(int newHealth)
     }
 }
 
-void Character::setExp(int num)
+int Character::getExp()
 {
-    experience += num;
+    return experience;
 }
 
-void Character::setGold(int num)
+void Character::setExp(int newEXP)
 {
-    gold += num;
+    experience = newEXP;
+}
+
+int Character::getGold()
+{
+    return gold;
+}
+
+void Character::setGold(int newGold)
+{
+    gold = newGold;
 }
 
 bool Character::takeDamage(int damage)
@@ -111,6 +121,7 @@ bool Character::takeDamage(int damage)
     if (health <= 0)
     {
         cout << "다시 돌아오겠다.." << endl;
+        cout << " - Game Over -" << endl;
         return true;
     }
     else

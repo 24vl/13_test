@@ -80,8 +80,8 @@ void GameManager::battle(Character* player)
                     cout << "공격력 포션 획득!" << endl;
                 }
             }
-            player->setExp(50);
-            player->setGold(10 + 10 * (r % 2));
+            player->setExp(player->getExp() + 50);
+            player->setGold(player->getGold() + 10 * (r % 2 + 1));
             player->levelUp();
             delete monster;
             break;

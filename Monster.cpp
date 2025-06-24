@@ -1,6 +1,6 @@
 ﻿#include "Monster.h"
 
-//--- Student1
+//--- Student1 / 성준모 학생
 string Student1::getName()
 {
 	return name;
@@ -38,7 +38,7 @@ void Student1::displayStatus()
 
 
 
-//--- Student2
+//--- Student2 / 김지원 학생
 string Student2::getName()
 {
 	return name;
@@ -63,7 +63,7 @@ bool Student2::takeDamage(int damage)
 	else
 	{
 		displayStatus();
-		cout << "\"으악! 과제 그만!\"" << endl;
+		cout << "\"흑흑 과제를 또 주시는건가요?\"" << endl;
 		return false;
 	}
 }
@@ -75,7 +75,7 @@ void Student2::displayStatus()
 }
 
 
-//--- Student3
+//--- Student3 / 김성빈 학생
 string Student3::getName()
 {
 	return name;
@@ -100,7 +100,7 @@ bool Student3::takeDamage(int damage)
 	else
 	{
 		displayStatus();
-		cout << "\"으악! 과제 그만!\"" << endl;
+		cout << "\"하하.. 하하.. 과제다..\"" << endl;
 		return false;
 	}
 }
@@ -112,7 +112,7 @@ void Student3::displayStatus()
 }
 
 
-//--- Student4::
+//--- Student4 / 최선호 학생
 string Student4::getName()
 {
 	return name;
@@ -137,7 +137,7 @@ bool Student4::takeDamage(int damage)
 	else
 	{
 		displayStatus();
-		cout << "\"으악! 과제 그만!\"" << endl;
+		cout << "\"과제.. 해야죠.. 그럼요..\"" << endl;
 		return false;
 	}
 }
@@ -149,7 +149,7 @@ void Student4::displayStatus()
 }
 
 
-//--- Student5
+//--- Student5 / 전형준 학생
 string Student5::getName()
 {
 	return name;
@@ -174,7 +174,7 @@ bool Student5::takeDamage(int damage)
 	else
 	{
 		displayStatus();
-		cout << "\"으악! 과제 그만!\"" << endl;
+		cout << "\"어.. 잘 모르겠지만 해보겠습니다..\"" << endl;
 		return false;
 	}
 }
@@ -186,7 +186,7 @@ void Student5::displayStatus()
 }
 
 
-//--- Student6
+//--- Student6 / 장재근 학생
 string Student6::getName()
 {
 	return name;
@@ -211,7 +211,7 @@ bool Student6::takeDamage(int damage)
 	else
 	{
 		displayStatus();
-		cout << "\"으악! 과제 그만!\"" << endl;
+		cout << "\"다 했습니다! 과제 더 주실건가요?\"" << endl;
 		return false;
 	}
 }

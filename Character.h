@@ -43,7 +43,9 @@ public:
     void setAttack(int newAttack);
     int getHealth();
     void setHealth(int newHealth);
+    int getExp();
     void setExp(int num);
+    int getGold();
     void setGold(int num);
     bool takeDamage(int damage);
     ~Character();
