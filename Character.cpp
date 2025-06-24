@@ -70,6 +70,15 @@ void Character::useItem(int index)
     }
 }
 
+void Character::eraseItem(int index)
+{
+    if (!Inventory.empty())
+    {
+        delete Inventory[index];
+        Inventory.erase(Inventory.begin() + index);
+    }
+}
+
 int Character::getAttack()
 {
     return attack;
@@ -134,6 +143,9 @@ bool Character::takeDamage(int damage)
 
 Character::~Character()
 {
-
+    for (int i = 0; i < Inventory.size(); i++)
+    {
+        delete Inventory[i];
+    }
 }
 

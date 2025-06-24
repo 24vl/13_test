@@ -2,6 +2,7 @@
 #include "Item.h"
 #include "Character.h"
 #include "Monster.h"
+#include "Shop.h"
 #include <iostream>
 
 class Monster;
@@ -42,6 +43,15 @@ Monster* GameManager::generateMonster(int level) // level = Character.getLevel()
     }
     else // 보스 전투
     {
+        cout << " ____                               __      __      __     " << endl;
+        cout << "/\\  _`\\                            /\\ \\    /\\ \\    /\\ \\    " << endl;
+        cout << "\\ \\ \\L\\ \\    ___     ____    ____  \\ \\ \\   \\ \\ \\   \\ \\ \\   " << endl;
+        cout << " \\ \\  _ <'  / __`\\  /',__\\  /',__\\  \\ \\ \\   \\ \\ \\   \\ \\ \\  " << endl;
+        cout << "  \\ \\ \\L\\ \\/\\ \\L\\ \\/\\__, `\\/\\__, `\\  \\ \\_\\   \\ \\_\\   \\ \\_\\ " << endl;
+        cout << "   \\ \\____/\\ \\____/\\/____/\\/____/   \\/\\_\\   \\/\\_\\   \\/\\_\\" << endl;
+        cout << "    \\/___/  \\/___/  \\/___/  \\/___/     \\/_/    \\/_/    \\/_/" << endl;
+        cout << "                                                           " << endl;
+        cout << "                                                          " << endl;
         Student6* s6 = new Student6;
         return s6;
     }
@@ -106,13 +116,16 @@ void GameManager::displayInventory(Character* player)
         {
             if (player->getInventory()[i] != nullptr)
             {
+                cout << i << ". ";
                 cout << player->getInventory()[i]->getName() << endl;
             }
         }
+        cout << "---------------" << endl;
     }
     else
     {
         cout << "-- Inventory --" << endl;
+        cout << "---------------" << endl;
     }
 }
 

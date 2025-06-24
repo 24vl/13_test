@@ -48,6 +48,7 @@ public:
     int getGold();
     void setGold(int num);
     bool takeDamage(int damage);
+    void eraseItem(int index);
     ~Character();
 };
 

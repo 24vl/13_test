@@ -1,4 +1,5 @@
 ﻿#include "GameManager.h"
+#include "Shop.h"
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
@@ -56,7 +57,41 @@ int main()
 		else if (num == 2)
 		{
 			system("cls");
-			cout << "상점이 없습니다." << endl;
+			int n;
+			Shop shop;
+			while (true)
+			{
+				system("pause");
+				system("cls");
+				cout << "소지 골드 : " << c.getGold() << endl;
+				m.displayInventory(&c);
+				shop.displayItems();
+				cout << "1.구매 2.판매 3.떠나기" << endl;
+				cin >> n;
+				if (n == 1)
+				{
+					cout << "구매할 아이템 : ";
+					cin >> n;
+					shop.buyItem(n, &c);
+					continue;
+				}
+				else if (n == 2)
+				{
+					cout << "판매할 아이템 : ";
+					cin >> n;
+					shop.sellItem(n, &c);
+					continue;
+				}
+				else if (n == 3)
+				{
+					break;
+				}
+				else
+				{
+					cout << "잘못된 입력입니다." << endl;
+					continue;
+				}
+			}
 		}
 		else if (num == 3)
 		{
@@ -83,12 +118,13 @@ int main()
 //
 // ** 캐릭터 레벨업 대사 추가 [Character]
 // ** 캐릭터 공격 대사 추가
+// V ** 보스 출현 대사
 // 
 // ** 몬스터 공격 대사 추가 [Monstser]
 //
 // * 캐릭터가 죽으면 처음으로 리셋 [GameManager]
 // 
-// * 상점 만들기 [Shop]
+// V * 상점 만들기 [Shop]
 // 
 // * 꾸미기(?) 아스키 아트 사용
 // 
