@@ -26,7 +26,7 @@ public:
 class Student1 : public Monster
 {
 public:
-	Student1() : Monster("성준모 학생", 5, 50) {}
+	Student1() : Monster("성준모 학생", 30, 130) {}
 	string getName();
 	int getAttack();
 	int getHealth();
@@ -37,7 +37,7 @@ public:
 class Student2 : public Monster
 {
 public:
-	Student2() : Monster("김지원 학생", 5, 50) {}
+	Student2() : Monster("김지원 학생", 40, 100) {}
 	string getName();
 	int getAttack();
 	int getHealth();
@@ -48,7 +48,7 @@ public:
 class Student3 : public Monster
 {
 public:
-	Student3() : Monster("김성빈 학생", 10, 100) {}
+	Student3() : Monster("김성빈 학생", 70, 200) {}
 	string getName();
 	int getAttack();
 	int getHealth();
@@ -59,7 +59,7 @@ public:
 class Student4 : public Monster
 {
 public:
-	Student4() : Monster("최선호 학생", 15, 150) {}
+	Student4() : Monster("최선호 학생", 100, 300) {}
 	string getName();
 	int getAttack();
 	int getHealth();
@@ -70,7 +70,7 @@ public:
 class Student5 : public Monster
 {
 public:
-	Student5() : Monster("전형준 학생", 15, 150) {}
+	Student5() : Monster("전형준 학생", 80, 400) {}
 	string getName();
 	int getAttack();
 	int getHealth();
@@ -81,7 +81,7 @@ public:
 class Student6 : public Monster
 {
 public:
-	Student6() : Monster("장재근 학생", 20, 300) {}
+	Student6() : Monster("장재근 학생", 150, 800) {}
 	string getName();
 	int getAttack();
 	int getHealth();

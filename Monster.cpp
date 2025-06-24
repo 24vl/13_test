@@ -13,7 +13,7 @@ int Student1::getHealth()
 {
 	return health;
 }
-bool Student1::takeDamage(int damage)
+bool Student1::takeDamage(int damage) // Character.getAttack();
 {
 	health -= damage;
 	if (health < 0) 

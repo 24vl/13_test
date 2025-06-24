@@ -17,7 +17,7 @@ class Item;
 
 class Character
 {
-protected:
+private:
     string name;
     int level = 1;
     int experience = 0;
@@ -49,6 +49,8 @@ public:
     void setGold(int num);
     bool takeDamage(int damage);
     void eraseItem(int index);
+    void resetStatus();
+
     ~Character();
 };
 

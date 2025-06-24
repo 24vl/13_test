@@ -30,7 +30,7 @@ void Character::levelUp()
 {
     if (level < 10 && experience >= 100)
     {
-        int Up = experience / 100;
+        int Up = experience / 100; // 150 -> 1  320 -> 3;
         level += Up;
         experience %= 100;
         maxHealth += Up * 20;
@@ -61,12 +61,12 @@ void Character::getItem(Item* item)
 
 void Character::useItem(int index)
 {
-    if (!Inventory.empty())
+    if (!Inventory.empty()) // ! not // Inventory.size() != 0; 
     {
-        Item* temp = Inventory[index];
+        Item* temp = Inventory[index]; // vector<Item*> vec = { &HealthPotion, &AttackBoost }
         temp->use(this);
         delete Inventory[index];
-        Inventory.erase(Inventory.begin() + index);
+        Inventory.erase(Inventory.begin() + index); // 00004 00008 00012
     }
 }
 
@@ -127,8 +127,9 @@ bool Character::takeDamage(int damage)
 {
     health -= damage;
 
-    if (health <= 0)
+    if (health <= 0) // 사망 시
     {
+        health = 0;
         cout << "다시 돌아오겠다.." << endl;
         cout << " - Game Over -" << endl;
         return true;
@@ -139,6 +140,18 @@ bool Character::takeDamage(int damage)
         cout << "\"으윽! 과제를 더 내주겠다!\"" << endl;
         return false;
     }
+}
+
+void Character::resetStatus() // 캐릭터 스텟 리셋 함수
+{
+    level = 1;
+    experience = 0;
+    attack = 30;
+    health = 200;
+    maxHealth = 200;
+    gold = 0;
+    // delete 
+    Inventory.clear(); // 벡터 원소 초기화
 }
 
 Character::~Character()
