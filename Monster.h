@@ -21,6 +21,7 @@ public:
 	virtual int getHealth() = 0;
 	virtual bool takeDamage(int damage) = 0;
 	virtual void displayStatus() = 0;
+	virtual void skillMonster() = 0;
 };
 
 class Student1 : public Monster
@@ -32,6 +33,7 @@ public:
 	int getHealth();
 	bool takeDamage(int damage);
 	void displayStatus();
+	void skillMonster();
 };
 
 class Student2 : public Monster
@@ -43,6 +45,7 @@ public:
 	int getHealth();
 	bool takeDamage(int damage);
 	void displayStatus();
+	void skillMonster();
 };
 
 class Student3 : public Monster
@@ -54,6 +57,7 @@ public:
 	int getHealth();
 	bool takeDamage(int damage);
 	void displayStatus();
+	void skillMonster();
 };
 
 class Student4 : public Monster
@@ -65,6 +69,7 @@ public:
 	int getHealth();
 	bool takeDamage(int damage);
 	void displayStatus();
+	void skillMonster();
 };
 
 class Student5 : public Monster
@@ -76,6 +81,7 @@ public:
 	int getHealth();
 	bool takeDamage(int damage);
 	void displayStatus();
+	void skillMonster();
 };
 
 class Student6 : public Monster
@@ -87,6 +93,7 @@ public:
 	int getHealth();
 	bool takeDamage(int damage);
 	void displayStatus();
+	void skillMonster();
 };
 
 #endif

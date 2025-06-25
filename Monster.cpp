@@ -29,11 +29,15 @@ bool Student1::takeDamage(int damage) // Character.getAttack();
 		return false;
 	}
 }
-
 void Student1::displayStatus()
 {
 	cout << "- " << getName() << " -" << endl;
 	cout << "공격력 : " << getAttack() << "   / 남은 체력 : " << getHealth() << endl;
+}
+void Student1::skillMonster()
+{
+	cout << "반항하기!" << endl;
+	cout << attack << "의 데미지를 주었습니다.\n" << endl;
 }
 
 
@@ -67,11 +71,15 @@ bool Student2::takeDamage(int damage)
 		return false;
 	}
 }
-
 void Student2::displayStatus()
 {
 	cout << "- " << getName() << " -" << endl;
 	cout << "공격력 : " << getAttack() << "   / 남은 체력 : " << getHealth() << endl;
+}
+void Student2::skillMonster()
+{
+	cout << "반항하기!" << endl;
+	cout << attack << "의 데미지를 주었습니다.\n" << endl;
 }
 
 
@@ -104,11 +112,15 @@ bool Student3::takeDamage(int damage)
 		return false;
 	}
 }
-
 void Student3::displayStatus()
 {
 	cout << "- " << getName() << " -" << endl;
 	cout << "공격력 : " << getAttack() << "   / 남은 체력 : " << getHealth() << endl;
+}
+void Student3::skillMonster()
+{
+	cout << "반항하기!" << endl;
+	cout << attack << "의 데미지를 주었습니다.\n" << endl;
 }
 
 
@@ -141,11 +153,15 @@ bool Student4::takeDamage(int damage)
 		return false;
 	}
 }
-
 void Student4::displayStatus()
 {
 	cout << "- " << getName() << " -" << endl;
 	cout << "공격력 : " << getAttack() << "   / 남은 체력 : " << getHealth() << endl;
+}
+void Student4::skillMonster()
+{
+	cout << "반항하기!" << endl;
+	cout << attack << "의 데미지를 주었습니다.\n" << endl;
 }
 
 
@@ -178,11 +194,15 @@ bool Student5::takeDamage(int damage)
 		return false;
 	}
 }
-
 void Student5::displayStatus()
 {
 	cout << "- " << getName() << " -" << endl;
 	cout << "공격력 : " << getAttack() << "   / 남은 체력 : " << getHealth() << endl;
+}
+void Student5::skillMonster()
+{
+	cout << "반항하기!" << endl;
+	cout << attack << "의 데미지를 주었습니다.\n" << endl;
 }
 
 
@@ -215,9 +235,13 @@ bool Student6::takeDamage(int damage)
 		return false;
 	}
 }
-
 void Student6::displayStatus()
 {
 	cout << "- " << getName() << " -" << endl;
 	cout << "공격력 : " << getAttack() << "   / 남은 체력 : " << getHealth() << endl;
+}
+void Student6::skillMonster()
+{
+	cout << "반항하기!" << endl;
+	cout << attack << "의 데미지를 주었습니다.\n" << endl;
 }

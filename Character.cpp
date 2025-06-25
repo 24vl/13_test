@@ -18,12 +18,11 @@ void Character::setName(string n)
 
 void Character::displayStatus()
 {
-    cout << " - " << name << " - " << endl;
-    cout << "HP: " << health << "/" << maxHealth;
-    cout << "     AD: " << attack << endl;
-    cout << "LV : " << level;
-    cout << "     Exp : " << experience << endl;
-    cout << "Gold: " << gold << endl;
+    cout << " - " << name << " - ";
+    cout << " LV:" << level << " (" << experience << "%)" << endl;
+    cout << "HP:" << health << "/" << maxHealth;
+    cout << "  AD:" << attack << endl;
+    cout << "Gold:" << gold << "  kill:" << killCount << endl;
 }
 
 void Character::levelUp()
@@ -36,6 +35,11 @@ void Character::levelUp()
         maxHealth += Up * 20;
         health = maxHealth;
         attack += Up * 5;
+
+        if (Up >= 1)
+        {
+            cout << "레벨 업! 현재 레벨:" << level << endl;
+        }
     }
 
     if (level > 10)
@@ -150,8 +154,48 @@ void Character::resetStatus() // 캐릭터 스텟 리셋 함수
     health = 200;
     maxHealth = 200;
     gold = 0;
+    killCount = 0;
     // delete 
+    for (int i = 0; i < Inventory.size(); i++)
+    {
+        delete Inventory[i];
+    }
     Inventory.clear(); // 벡터 원소 초기화
+    killLog.clear();
+}
+
+void Character::skillCharacter()
+{
+    cout << "과제 투척!" << endl;
+    cout << attack << "데미지를 주었습니다.\n" << endl;
+
+}
+
+int Character::getKillCount()
+{
+    return killCount;
+}
+
+void Character::setKillCount(int newCount)
+{
+    killCount = newCount;
+}
+
+map<string, int> Character::getKillLog()
+{
+    return killLog;
+}
+
+void Character::insertKillLog(string killName)
+{
+    if (killLog.find(killName) == killLog.end())
+    {
+        killLog[killName] = 1;
+    }
+    else
+    {
+        killLog[killName]++;
+    }
 }
 
 Character::~Character()

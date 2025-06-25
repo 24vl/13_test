@@ -13,10 +13,9 @@
 #include <ctime>
 #include <cstdlib>
 #include <windows.h>
+#include <map>
 
 using namespace std;
-
-class Monster;
 
 class GameManager
 {
@@ -26,7 +25,7 @@ public:
     void battle(Character* player); // 반복 자동 전투
     void displayInventory(Character* player); // 물약 가방 출력
     void menu(Character* player); // 무한 반복 메뉴 출력
-
+    void displayLog(Character* player);
 };
 
 

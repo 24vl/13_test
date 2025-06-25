@@ -76,7 +76,7 @@ void GameManager::battle(Character* player)
         system("color 07");
         system("cls");
 
-        cout << "과제 투척!\n\n";
+        player->skillCharacter();
         // 캐릭터 공격 대사 만들기
         if (monster->takeDamage(player->getAttack()))
         {
@@ -98,11 +98,14 @@ void GameManager::battle(Character* player)
             }
             player->setExp(player->getExp() + 50);
             player->setGold(player->getGold() + 10 * (r % 2 + 1));
+            player->setKillCount(player->getKillCount() + 1);
+            player->insertKillLog(monster->getName());
             player->levelUp();
             delete monster;
             break;
         }
-        cout << "반항하기!\n\n";
+        
+        monster->skillMonster();
         // 몬스터 공격 대사 만들기
         if (player->takeDamage(monster->getAttack()))
         {
@@ -144,7 +147,7 @@ void GameManager::menu(Character* player)
     {
         system("pause");
         system("cls");
-        cout << "1.전투     2.상점     3.종료\n\n";
+        cout << "1.전투  2.상점  3.로그  4.종료\n\n";
         player->displayStatus();
         cout << "\n";
         displayInventory(player);
@@ -195,6 +198,10 @@ void GameManager::menu(Character* player)
         }
         else if (number == 3)
         {
+            displayLog(player);
+        }
+        else if (number == 4)
+        {
             system("cls");
             cout << "게임을 종료합니다." << endl;
             break;
@@ -208,3 +215,13 @@ void GameManager::menu(Character* player)
     }
 }
 
+void GameManager::displayLog(Character* player)
+{
+    cout << "\n    내준 과제\n";
+    cout << "-----------------\n\n";
+    for (auto it : player->getKillLog())
+    {
+        cout << it.first << " : " << it.second << "개\n";
+    }
+    cout << "\n-----------------\n" << endl;
+}

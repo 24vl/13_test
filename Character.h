@@ -8,6 +8,7 @@
 #include <ctime>
 #include <cstdlib>
 #include <memory>
+#include <map>
 
 #include "Item.h"
 
@@ -25,7 +26,9 @@ private:
     int health = 200;
     int maxHealth = 200;
     int gold = 0;
+    int killCount = 0;
     vector<Item*> Inventory;
+    map<string, int> killLog;
     
 
 public:
@@ -50,6 +53,11 @@ public:
     bool takeDamage(int damage);
     void eraseItem(int index);
     void resetStatus();
+    void skillCharacter();
+    int getKillCount();
+    void setKillCount(int newCount);
+    map<string, int> getKillLog();
+    void insertKillLog(string killName);
 
     ~Character();
 };
