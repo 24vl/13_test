@@ -1,21 +1,38 @@
 ﻿#include "Character.h"
-#include "Item.h"
 
+//--- 생성자
 Character::Character(string n = " ") : name(n)
 {
     health = maxHealth;
 }
 
-string Character::getName()
-{
-    return name;
-}
 
-void Character::setName(string n)
-{
-    name = n;
-}
+//--- getter
+string Character::getName() { return name; }
+int Character::getLevel() { return level; }
+int Character::getExp() { return experience; }
+int Character::getAttack() { return attack; }
+int Character::getHealth() { return health; }
+int Character::getGold() { return gold; }
+vector<Item*> Character::getInventory() { return Inventory; }
+int Character::getKillCount() { return killCount; }
+map<string, int> Character::getKillLog() { return killLog; }
 
+
+//--- setter
+void Character::setName(string n) { name = n; }
+void Character::setExp(int newEXP) { experience = newEXP; }
+void Character::setAttack(int newAttack) { attack = newAttack; }
+void Character::setHealth(int newHealth) 
+{
+    health = newHealth;
+    if (health > maxHealth) { health = maxHealth; }
+}
+void Character::setGold(int newGold) { gold = newGold; }
+void Character::setKillCount(int newCount) { killCount = newCount; }
+
+//--- 기타 기능
+// 상태창 출력
 void Character::displayStatus()
 {
     cout << " - " << name << " - ";
@@ -24,7 +41,7 @@ void Character::displayStatus()
     cout << "  AD:" << attack << endl;
     cout << "Gold:" << gold << "  kill:" << killCount << endl;
 }
-
+// 레벨 업
 void Character::levelUp()
 {
     if (level < 10 && experience >= 100)
@@ -47,22 +64,45 @@ void Character::levelUp()
         level = 10;
     }
 }
-
-int Character::getLevel()
+// 캐릭터 리셋
+void Character::resetStatus()
 {
-    return level;
+    level = 1;
+    experience = 0;
+    attack = 30;
+    health = 200;
+    maxHealth = 200;
+    gold = 0;
+    killCount = 0;
+    // delete 
+    for (int i = 0; i < Inventory.size(); i++)
+    {
+        delete Inventory[i];
+    }
+    Inventory.clear(); // 벡터 원소 초기화
+    killLog.clear();
+}
+// 몬스터별 킬 카운트
+void Character::insertKillLog(string killName)
+{
+    if (killLog.find(killName) == killLog.end())
+    {
+        killLog[killName] = 1;
+    }
+    else
+    {
+        killLog[killName]++;
+    }
 }
 
-vector<Item*> Character::getInventory()
-{
-    return Inventory;
-}
 
+//--- 아이템 관련
+// 인벤토리 아이템 추가
 void Character::getItem(Item* item)
 {
     Inventory.push_back(item);
 }
-
+// 아이템 사용
 void Character::useItem(int index)
 {
     if (!Inventory.empty()) // ! not // Inventory.size() != 0; 
@@ -73,7 +113,7 @@ void Character::useItem(int index)
         Inventory.erase(Inventory.begin() + index); // 00004 00008 00012
     }
 }
-
+// 인벤토리 아이템 제거
 void Character::eraseItem(int index)
 {
     if (!Inventory.empty())
@@ -83,50 +123,9 @@ void Character::eraseItem(int index)
     }
 }
 
-int Character::getAttack()
-{
-    return attack;
-}
 
-void Character::setAttack(int newAttack)
-{
-    attack = newAttack;
-}
-
-int Character::getHealth()
-{
-    return health;
-}
-
-void Character::setHealth(int newHealth)
-{
-    health = newHealth;
-    if (health > maxHealth)
-    {
-        health = maxHealth;
-    }
-}
-
-int Character::getExp()
-{
-    return experience;
-}
-
-void Character::setExp(int newEXP)
-{
-    experience = newEXP;
-}
-
-int Character::getGold()
-{
-    return gold;
-}
-
-void Character::setGold(int newGold)
-{
-    gold = newGold;
-}
-
+//--- 전투 기능
+// 몬스터 피격
 bool Character::takeDamage(int damage)
 {
     health -= damage;
@@ -145,25 +144,7 @@ bool Character::takeDamage(int damage)
         return false;
     }
 }
-
-void Character::resetStatus() // 캐릭터 스텟 리셋 함수
-{
-    level = 1;
-    experience = 0;
-    attack = 30;
-    health = 200;
-    maxHealth = 200;
-    gold = 0;
-    killCount = 0;
-    // delete 
-    for (int i = 0; i < Inventory.size(); i++)
-    {
-        delete Inventory[i];
-    }
-    Inventory.clear(); // 벡터 원소 초기화
-    killLog.clear();
-}
-
+// 몬스터 공격
 void Character::skillCharacter()
 {
     cout << "과제 투척!" << endl;
@@ -171,33 +152,8 @@ void Character::skillCharacter()
 
 }
 
-int Character::getKillCount()
-{
-    return killCount;
-}
 
-void Character::setKillCount(int newCount)
-{
-    killCount = newCount;
-}
-
-map<string, int> Character::getKillLog()
-{
-    return killLog;
-}
-
-void Character::insertKillLog(string killName)
-{
-    if (killLog.find(killName) == killLog.end())
-    {
-        killLog[killName] = 1;
-    }
-    else
-    {
-        killLog[killName]++;
-    }
-}
-
+//--- 소멸자 // 메모리 누수 방지
 Character::~Character()
 {
     for (int i = 0; i < Inventory.size(); i++)
@@ -205,4 +161,3 @@ Character::~Character()
         delete Inventory[i];
     }
 }
-

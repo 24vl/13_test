@@ -1,5 +1,4 @@
 ﻿#include "Item.h"
-#include "Character.h"
 
 
 //---
@@ -11,8 +10,8 @@ string HealthPotion::getName()
 void HealthPotion::use(Character* character)
 {
 	character->setHealth(character->getHealth() + effect);
-	cout << getName() << "! recover Health +50!" << endl;
-	cout << "current health : " << character->getHealth() << endl;
+	cout << getName() << " 먹기! 체력 50 회복!" << endl;
+	cout << "현재 체력 : " << character->getHealth() << endl;
 }
 
 HealthPotion::~HealthPotion() {}
@@ -26,8 +25,8 @@ string AttackBoost::getName()
 void AttackBoost::use(Character* character)
 {
 	character->setAttack(character->getAttack() + effect);
-	cout << getName() << "! damage +10!" << endl;
-	cout << "current damage : " << character->getAttack() << endl;
+	cout << getName() << " 마시기! 공격력 +10!" << endl;
+	cout << "현재 공격력 : " << character->getAttack() << endl;
 }
 
 AttackBoost::~AttackBoost() {}

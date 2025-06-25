@@ -1,9 +1,4 @@
 ﻿#include "GameManager.h"
-#include "Item.h"
-#include "Character.h"
-#include "Monster.h"
-#include "Shop.h"
-#include <iostream>
 
 class Monster;
 
@@ -12,33 +7,28 @@ Monster* GameManager::generateMonster(int level) // level = Character.getLevel()
     if (level <= 3)
     {
         if (rand() % 2 == 0)
-        {
-            Student1* s1 = new Student1;
-            return s1;
+        { 
+            return new Student1;
         }
         else
         {
-            Student2* s2 = new Student2();
-            return s2;
+            return new Student2();
         }
 
     }
     else if (level > 3 && level <= 6)
     {
-        Student3* s3 = new Student3;
-        return s3;
+        return new Student3;
     }
     else if (level > 6 && level <= 9)
     {
         if (rand() % 2 == 0)
         {
-            Student4* s4 = new Student4;
-            return s4;
+            return new Student4;
         }
         else
         {
-            Student5* s5 = new Student5;
-            return s5;
+            return new Student5;
         }
     }
     else // 보스 전투
@@ -55,8 +45,7 @@ Monster* GameManager::generateMonster(int level) // level = Character.getLevel()
         cout << "                                                          " << endl;
         Sleep(1500); // 1500ms
 
-        Student6* s6 = new Student6;
-        return s6;
+        return new Student6;
     }
 }
 
@@ -65,8 +54,8 @@ void GameManager::battle(Character* player)
     system("color 0e");
     Monster* monster;
     monster = generateMonster(player->getLevel());
-    cout << "!!!!! 야생의 " << monster->getName();
-    cout << "이 등장했다 !!!!!\n" << endl;
+    cout << "!!!!! 튜터실에 " << monster->getName();
+    cout << "이 나타났다 !!!!!\n" << endl;
     monster->displayStatus();
 
     while (true)
@@ -77,7 +66,6 @@ void GameManager::battle(Character* player)
         system("cls");
 
         player->skillCharacter();
-        // 캐릭터 공격 대사 만들기
         if (monster->takeDamage(player->getAttack()))
         {
             int r = rand();
@@ -85,15 +73,15 @@ void GameManager::battle(Character* player)
             {
                 if (r % 2 == 0)
                 {
-                    HealthPotion* h = new HealthPotion;
+                    Item* h = new HealthPotion;
                     player->getItem(h);
-                    cout << "체력 포션 획득!" << endl;
+                    cout << h->getName() << " 획득!" << endl;
                 }
                 else
                 {
-                    AttackBoost* a = new AttackBoost;
+                    Item* a = new AttackBoost;
                     player->getItem(a);
-                    cout << "공격력 포션 획득!" << endl;
+                    cout << a->getName() << " 획득!" << endl;
                 }
             }
             player->setExp(player->getExp() + 50);
@@ -101,19 +89,24 @@ void GameManager::battle(Character* player)
             player->setKillCount(player->getKillCount() + 1);
             player->insertKillLog(monster->getName());
             player->levelUp();
+
+            if (monster->getName() == "장재근 학생") { end = true; }
+
             delete monster;
+            monster = nullptr;
             break;
         }
         
         monster->skillMonster();
-        // 몬스터 공격 대사 만들기
         if (player->takeDamage(monster->getAttack()))
         {
             player->resetStatus(); // 사망 시 리셋
             delete monster;
+            monster = nullptr;
             break;
         }
-        player->useItem(0);
+
+        player->useItem(0); // 아이템 사용 로직 미구현
     }
 }
 
@@ -146,6 +139,11 @@ void GameManager::menu(Character* player)
     while (true)
     {
         system("pause");
+        if (end) 
+        { 
+            ending();
+            break; 
+        }
         system("cls");
         cout << "1.전투  2.상점  3.로그  4.종료\n\n";
         player->displayStatus();
@@ -191,6 +189,10 @@ void GameManager::menu(Character* player)
                 }
                 else
                 {
+                    cin.clear();
+                    string dummy;
+                    getline(cin, dummy);
+                    //while (cin.get() == '\n') continue;
                     cout << "잘못된 입력입니다." << endl;
                     continue;
                 }
@@ -199,6 +201,7 @@ void GameManager::menu(Character* player)
         else if (number == 3)
         {
             displayLog(player);
+            continue;
         }
         else if (number == 4)
         {
@@ -209,6 +212,9 @@ void GameManager::menu(Character* player)
         else
         {
             system("cls");
+            cin.clear();
+            string dummy;
+            getline(cin, dummy);
             cout << "잘못된 입력입니다." << endl;
             continue;
         }
@@ -224,4 +230,10 @@ void GameManager::displayLog(Character* player)
         cout << it.first << " : " << it.second << "개\n";
     }
     cout << "\n-----------------\n" << endl;
+}
+
+void GameManager::ending() //엔딩
+{
+    system("cls");
+    cout << "게임을 플레이 해 주셔서 감사합니다!" << endl;
 }

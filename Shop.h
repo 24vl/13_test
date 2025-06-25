@@ -4,11 +4,11 @@
 #include "GameManager.h"
 #include "Character.h"
 #include "Item.h"
+#include <vector>
 
 class Shop
 {
 private:
-	vector<Item*> availableItems;
 
 public:
 	Shop();

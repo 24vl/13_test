@@ -1,18 +1,27 @@
 ﻿#include "Monster.h"
 
-//--- Student1 / 성준모 학생
-string Student1::getName()
+//--- Monster / 부모 클래스
+string Monster::getName()
 {
 	return name;
 }
-int Student1::getAttack()
+int Monster::getAttack()
 {
 	return attack;
 }
-int Student1::getHealth()
+int Monster::getHealth()
 {
 	return health;
 }
+void Monster::displayStatus()
+{
+	cout << "- " << getName() << " ------------------" << endl;
+	cout << "공격력 : " << getAttack() << "   / 남은 체력 : " << getHealth() << endl;
+	cout << "--------------------------------" << endl;
+}
+
+
+//--- Student1 / 성준모 학생
 bool Student1::takeDamage(int damage) // Character.getAttack();
 {
 	health -= damage;
@@ -29,32 +38,15 @@ bool Student1::takeDamage(int damage) // Character.getAttack();
 		return false;
 	}
 }
-void Student1::displayStatus()
-{
-	cout << "- " << getName() << " -" << endl;
-	cout << "공격력 : " << getAttack() << "   / 남은 체력 : " << getHealth() << endl;
-}
 void Student1::skillMonster()
 {
-	cout << "반항하기!" << endl;
+	cout << "질문 공세!  \"튜터님 이건 어떻게 해야하나요 ㅜㅜ\"" << endl;
 	cout << attack << "의 데미지를 주었습니다.\n" << endl;
 }
 
 
 
 //--- Student2 / 김지원 학생
-string Student2::getName()
-{
-	return name;
-}
-int Student2::getAttack()
-{
-	return attack;
-}
-int Student2::getHealth()
-{
-	return health;
-}
 bool Student2::takeDamage(int damage)
 {
 	health -= damage;
@@ -71,11 +63,6 @@ bool Student2::takeDamage(int damage)
 		return false;
 	}
 }
-void Student2::displayStatus()
-{
-	cout << "- " << getName() << " -" << endl;
-	cout << "공격력 : " << getAttack() << "   / 남은 체력 : " << getHealth() << endl;
-}
 void Student2::skillMonster()
 {
 	cout << "반항하기!" << endl;
@@ -84,18 +71,6 @@ void Student2::skillMonster()
 
 
 //--- Student3 / 김성빈 학생
-string Student3::getName()
-{
-	return name;
-}
-int Student3::getAttack()
-{
-	return attack;
-}
-int Student3::getHealth()
-{
-	return health;
-}
 bool Student3::takeDamage(int damage)
 {
 	health -= damage;
@@ -112,31 +87,14 @@ bool Student3::takeDamage(int damage)
 		return false;
 	}
 }
-void Student3::displayStatus()
-{
-	cout << "- " << getName() << " -" << endl;
-	cout << "공격력 : " << getAttack() << "   / 남은 체력 : " << getHealth() << endl;
-}
 void Student3::skillMonster()
 {
-	cout << "반항하기!" << endl;
+	cout << "\"오아~!\"" << endl;
 	cout << attack << "의 데미지를 주었습니다.\n" << endl;
 }
 
 
 //--- Student4 / 최선호 학생
-string Student4::getName()
-{
-	return name;
-}
-int Student4::getAttack()
-{
-	return attack;
-}
-int Student4::getHealth()
-{
-	return health;
-}
 bool Student4::takeDamage(int damage)
 {
 	health -= damage;
@@ -153,11 +111,6 @@ bool Student4::takeDamage(int damage)
 		return false;
 	}
 }
-void Student4::displayStatus()
-{
-	cout << "- " << getName() << " -" << endl;
-	cout << "공격력 : " << getAttack() << "   / 남은 체력 : " << getHealth() << endl;
-}
 void Student4::skillMonster()
 {
 	cout << "반항하기!" << endl;
@@ -166,18 +119,6 @@ void Student4::skillMonster()
 
 
 //--- Student5 / 전형준 학생
-string Student5::getName()
-{
-	return name;
-}
-int Student5::getAttack()
-{
-	return attack;
-}
-int Student5::getHealth()
-{
-	return health;
-}
 bool Student5::takeDamage(int damage)
 {
 	health -= damage;
@@ -194,11 +135,6 @@ bool Student5::takeDamage(int damage)
 		return false;
 	}
 }
-void Student5::displayStatus()
-{
-	cout << "- " << getName() << " -" << endl;
-	cout << "공격력 : " << getAttack() << "   / 남은 체력 : " << getHealth() << endl;
-}
 void Student5::skillMonster()
 {
 	cout << "반항하기!" << endl;
@@ -207,18 +143,6 @@ void Student5::skillMonster()
 
 
 //--- Student6 / 장재근 학생
-string Student6::getName()
-{
-	return name;
-}
-int Student6::getAttack()
-{
-	return attack;
-}
-int Student6::getHealth()
-{
-	return health;
-}
 bool Student6::takeDamage(int damage)
 {
 	health -= damage;
@@ -234,11 +158,6 @@ bool Student6::takeDamage(int damage)
 		cout << "\"다 했습니다! 과제 더 주실건가요?\"" << endl;
 		return false;
 	}
-}
-void Student6::displayStatus()
-{
-	cout << "- " << getName() << " -" << endl;
-	cout << "공격력 : " << getAttack() << "   / 남은 체력 : " << getHealth() << endl;
 }
 void Student6::skillMonster()
 {

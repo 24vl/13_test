@@ -6,17 +6,8 @@
 
 using namespace std;
 
-int main()
+void Intro()
 {
-	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-
-	srand(time(NULL));
-
-	system("title 1IDIOT3");
-
-	GameManager m;
-	string str;
-
 	system("color 09");
 	cout << "\n      _      ______      ____       ______      _____       ______      __     " << endl;
 	cout << "    /' \\    /\\__  _\\    /\\  _`\\    /\\__  _\\    /\\  __`\\    /\\__  _\\   /'__`\\ " << endl;
@@ -29,23 +20,37 @@ int main()
 	system("pause");
 	system("color 07");
 	system("cls");
-	
+}
+
+int main()
+{
+	// 메모리 누수 체크
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
+	srand(time(NULL)); // 난수 테이블 리셋
+
+	system("title 1IDIOT3"); // 콘솔 창 이름 바꾸기
+
+	Intro(); // 인트로 화면
+
+	GameManager m; // GameManager 호출
+	string name; // 캐릭터 이름 변수
+
 	cout << "이름을 지어주세요." << endl;
-	cin >> str;
-	Character c(str); // 생성자로 닉네임 입력
+	cin >> name;
+	Character c(name); // 생성자로 닉네임 입력
 	if (c.getName() == "") // 닉네임 공백 방지
 	{
 		cout << "닉네임은 공백으로 할 수 없습니다." << endl;
 		return main();
 	}
-	system("cls"); // 로그 클리어
 
-	c.displayStatus();
+	system("cls"); // 로그 클리어
+	c.displayStatus(); // 초기 능력치 출력
 	cout << endl;
 	
 	system("pause"); // 아무 키 입력 시 계속
 	system("cls"); // 로그 클리어
-
 	m.battle(&c); // 실행 최초 강제 전투
 
 	m.menu(&c); // 메뉴 루프
@@ -59,13 +64,13 @@ int main()
 // 
 // V *** 배틀 루프 [GameManager]
 //
-// ** 캐릭터 레벨업 대사 추가 [Character]
+// V ** 캐릭터 레벨업 대사 추가 [Character]
 // V ** 캐릭터 공격 대사 추가
 // V ** 보스 출현 대사
 // 
 // V ** 몬스터 공격 대사 추가 [Monstser]
 //
-// * 캐릭터가 죽으면 처음으로 리셋 //
+// V * 캐릭터가 죽으면 처음으로 리셋 //
 // 
 // V * 상점 만들기 [Shop]
 // 
@@ -79,11 +84,11 @@ int main()
 //
 // ** 대사 수정
 // 
-// Log class 제작
+// V Log class 제작
 // 전투 ? 아이템 사용 ? 골드 획득 ? ” 중요한 이벤트는 콘솔에 쭉 기록됩니다.
 // 로그를 통해 오늘 어떤 몬스터를 몇 마리 눕혔는지~한 눈에 확인 가능!
 //
-// 메뉴 선택 string 입력
+// V 메뉴 선택 string 입력 오류
 
 
 //필수 체크

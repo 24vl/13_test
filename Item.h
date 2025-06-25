@@ -1,6 +1,8 @@
 ﻿#ifndef ITEM_H
 #define ITEM_H
 
+#include "Character.h"
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -29,7 +31,7 @@ private:
 	int effect;
 
 public:
-	HealthPotion() : name("HealthPotion"), effect(50) {}
+	HealthPotion() : name("초코바"), effect(50) {}
 	string getName();
 	void use(Character* character);
 	~HealthPotion();
@@ -42,7 +44,7 @@ private:
 	int effect;
 
 public:
-	AttackBoost() : name("AttackBoost"), effect(10) {}
+	AttackBoost() : name("에너지드링크"), effect(10) {}
 	string getName();
 	void use(Character* character);
 	~AttackBoost();

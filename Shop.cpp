@@ -1,5 +1,4 @@
 ﻿#include "Shop.h"
-#include <vector>
 
 Shop::Shop()
 {
@@ -8,8 +7,8 @@ Shop::Shop()
 
 void Shop::displayItems()
 {
-	cout << "1. Health Potion(체력 + 50) : 10 골드" << endl;
-	cout << "2. Attack Boost(공격력 + 10) : 15 골드" << endl;
+	cout << "\n1. 초코바(회복 + 50) : 10 골드" << endl;
+	cout << "2. 에너지드링크(공격력 + 10) : 15 골드\n" << endl;
 }
 
 void Shop::buyItem(int index, Character* player)
@@ -18,10 +17,10 @@ void Shop::buyItem(int index, Character* player)
 	{
 		if (player->getGold() >= 10)
 		{
-			HealthPotion* h = new HealthPotion;
+			Item* h = new HealthPotion;
 			player->getItem(h);
 			player->setGold(player->getGold() - 10);
-			cout << "체력 포션 구매!" << endl;
+			cout << h->getName() << " 구매!" << endl;
 			cout << "남은 골드 : " << player->getGold() << endl;
 		}
 		else
@@ -33,10 +32,10 @@ void Shop::buyItem(int index, Character* player)
 	{
 		if (player->getGold() >= 15)
 		{
-			AttackBoost* a = new AttackBoost;
+			Item* a = new AttackBoost;
 			player->getItem(a);
 			player->setGold(player->getGold() - 15);
-			cout << "공격력 포션 구매!" << endl;
+			cout << a->getName() << " 구매!" << endl;
 			cout << "남은 골드 : " << player->getGold() << endl;
 		}
 		else
@@ -58,18 +57,18 @@ void Shop::sellItem(int index, Character* player)
 		return;
 	}
 
-	if (player->getInventory()[index]->getName() == "HealthPotion")
+	if (player->getInventory()[index]->getName() == "초코바")
 	{
 		player->eraseItem(index);
 		player->setGold(player->getGold() + 10);
 		cout << "포션 판매!" << endl;
 		cout << "현재 골드 : " << player->getGold() << endl;
 	}
-	else if (player->getInventory()[index]->getName() == "AttackBoost")
+	else if (player->getInventory()[index]->getName() == "에너지드링크")
 	{
 		player->eraseItem(index);
 		player->setGold(player->getGold() + 15);
-		cout << "포션 판매!" << endl;
+		cout << "판매 완료!" << endl;
 		cout << "현재 골드 : " << player->getGold() << endl;
 	}
 }
