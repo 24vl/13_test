@@ -1,5 +1,6 @@
 ﻿#include "Item.h"
 
+using namespace std;
 
 //--- 체력 회복 포션
 // 생성자, 초기화

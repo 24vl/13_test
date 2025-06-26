@@ -1,5 +1,7 @@
 ﻿#include "Monster.h"
 
+using namespace std;
+
 //--- Monster / 부모 클래스
 // getter
 string Monster::getName() {	return name; }

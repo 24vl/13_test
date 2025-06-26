@@ -12,39 +12,37 @@
 
 #include "Item.h"
 
-using namespace std;
-
-class Item;
+class Item; // 전방 선언 안하면 오류 남 이유는 몰?루
 
 class Character
 {
 private:
-    string name;
+    std::string name;
     int level = 1;
     int experience = 0;
     int attack = 30;
     int health = 200;
     int maxHealth = 200;
     int gold = 0;
-    vector<Item*> Inventory;
+    std::vector<Item*> Inventory;
     int killCount = 0;
-    map<string, int> killLog;
+    std::map<std::string, int> killLog;
     
 
 public:
-    Character(string n = "player") : name(n) {}
+    Character(std::string n = "player") : name(n) {}
 
-    string getName();
+    std::string getName();
     int getLevel();
     int getExp();
     int getAttack();
     int getHealth();
     int getGold();
-    vector<Item*> getInventory();
+    std::vector<Item*> getInventory();
     int getKillCount();
-    map<string, int> getKillLog();
+    std::map<std::string, int> getKillLog();
 
-    void setName(string n);
+    void setName(std::string n);
     void setExp(int num);
     void setAttack(int newAttack);
     void setHealth(int newHealth);
@@ -53,7 +51,7 @@ public:
 
     void displayStatus();
     void levelUp();
-    void insertKillLog(string killName);
+    void insertKillLog(std::string killName);
     void resetStatus();
 
     void getItem(Item* item);

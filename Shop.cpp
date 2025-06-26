@@ -1,5 +1,7 @@
 ﻿#include "Shop.h"
 
+using namespace std;
+
 //--- 생성자
 Shop::Shop()
 {

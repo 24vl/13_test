@@ -1,22 +1,19 @@
 ﻿#ifndef Moster_H_
 #define Moster_H_
 
-
 #include <iostream>
 #include <string>
-
-using namespace std;
 
 class Monster
 {
 protected:
-	string name;
+	std::string name;
 	int attack;
 	int health;
 
 public:
-	Monster(string name, int attack, int health) : name(name), attack(attack), health(health) {}
-	string getName();
+	Monster(std::string name, int attack, int health) : name(name), attack(attack), health(health) {}
+	std::string getName();
 	int getAttack();
 	int getHealth();
 	void displayStatus();

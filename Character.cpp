@@ -1,5 +1,6 @@
 ﻿#include "Character.h"
 
+using namespace std;
 
 //--- getter
 string Character::getName() { return name; }

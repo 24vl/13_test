@@ -15,7 +15,6 @@
 #include <windows.h>
 #include <map>
 
-using namespace std;
 
 class GameManager
 {

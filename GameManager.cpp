@@ -1,6 +1,6 @@
 ﻿#include "GameManager.h"
 
-class Monster;
+using namespace std;
 
 // 몬스터 소환 // 동적 할당
 Monster* GameManager::generateMonster(int level) // level = Character->getLevel()
