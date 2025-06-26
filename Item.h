@@ -1,6 +1,8 @@
 ﻿#ifndef ITEM_H
 #define ITEM_H
 
+#include "Character.h"
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -8,7 +10,6 @@
 #include <ctime>
 #include <cstdlib>
 
-using namespace std;
 
 class Character;
 
@@ -17,7 +18,7 @@ class Item
 protected:
 
 public:
-	virtual string getName() = 0;
+	virtual std::string getName() = 0;
 	virtual void use(Character* character) = 0;
 	virtual ~Item() {}
 };
@@ -25,12 +26,12 @@ public:
 class HealthPotion : public Item
 {
 private:
-	string name;
+	std::string name;
 	int effect;
 
 public:
-	HealthPotion() : name("HealthPotion"), effect(50) {}
-	string getName();
+	HealthPotion();
+	std::string getName();
 	void use(Character* character);
 	~HealthPotion();
 };
@@ -38,12 +39,12 @@ public:
 class AttackBoost : public Item
 {
 private:
-	string name;
+	std::string name;
 	int effect;
 
 public:
-	AttackBoost() : name("AttackBoost"), effect(10) {}
-	string getName();
+	AttackBoost();
+	std::string getName();
 	void use(Character* character);
 	~AttackBoost();
 };

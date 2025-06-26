@@ -1,148 +1,68 @@
-#ifndef FUNCTION_H_
-#define FUNCTION_H_
+Ôªø#ifndef CHARACTER_H
+#define CHARACTER_H
 
-#include"GameManager.h"
+#include <iostream>
 #include <string>
-#include<iostream>
+#include <vector>
+#include <algorithm>
+#include <ctime>
+#include <cstdlib>
+#include <memory>
+#include <map>
 
-using namespace std;
+#include "Item.h"
+
+class Item; // Ï†ÑÎ∞© ÏÑ†Ïñ∏ ÏïàÌïòÎ©¥ Ïò§Î•ò ÎÇ® Ïù¥Ïú†Îäî Î™∞?Î£®
 
 class Character
 {
-
-
 private:
+    std::string name;
+    int level = 1;
+    int experience = 0;
+    int attack = 30;
+    int health = 200;
+    int maxHealth = 200;
+    int gold = 0;
+    std::vector<Item*> Inventory;
+    int killCount = 0;
+    std::map<std::string, int> killLog;
+    
 
-	
-	string cmd;
-	int level = 1;
-	int health = 200;
-	int maxHealth = 200;
-	int attack = 30;
-	int experience = 0;
-	int gold = 0;
-	//vector<item*> inventory;
 public:
+    Character(std::string n = "player") : name(n) {}
 
-	Character()
-	{
-		
-	}
+    std::string getName();
+    int getLevel();
+    int getExp();
+    int getAttack();
+    int getHealth();
+    int getGold();
+    std::vector<Item*> getInventory();
+    int getKillCount();
+    std::map<std::string, int> getKillLog();
 
+    void setName(std::string n);
+    void setExp(int num);
+    void setAttack(int newAttack);
+    void setHealth(int newHealth);
+    void setGold(int num);
+    void setKillCount(int newCount);
 
-	~Character()
-	{
+    void displayStatus();
+    void levelUp();
+    void insertKillLog(std::string killName);
+    void resetStatus();
 
-	}
-	
-	void levelUp()//∑π∫ßæ˜
-	{
-		if (level < 10 && experience >= 100)//AND ¡∂∞«
-		{
-			level += experience / 100; //∑π∫ß ¡ı∞°
-			experience = experience % 100;//≥≤¿∫ ∞Ê«Ëƒ° 
+    void getItem(Item* item);
+    void useItem(int index);
+    void eraseItem(int index);
+    
+    bool takeDamage(int damage);
+    void skillCharacter();
 
-			cout << "∑π∫ßæ˜ «œºÃΩ¿¥œ¥Ÿ!" << endl;
-			cout << "«ˆ¿Á∑π∫ß:" << level << endl;
-			cout << "====================================================================" << endl;
-		}
-			else if (experience > 101)
-			{
-			experience = 100;
-				
-			}
-
-		if (level > 10) //∑π∫ß ¡¶«—
-		{
-			level = 10;
-		}
-
-		maxHealth = maxHealth + 20;	// √÷¥Î √º∑¬ ¡ı∞°
-		health = maxHealth;			// √º∑¬ »∏∫π
-		attack = attack + 5;		// ∞¯∞›∑¬ ¡ı∞°
-	}
-
-	void setMaxHealth(int newMaxHealth)
-	{
-		this->maxHealth = newMaxHealth;
-	}
-
-	void setHealth(int newHealth)
-	{
-		this->health = newHealth;
-	}
-	
-	void setName(string name)
-	{
-		cmd = name;
-	}
-	void setGold(int g)
-	{
-		gold = g;
-	}
-	void setExperience(int e)
-	{
-		experience < 101;
-		experience = e;
-	}
-
-	void setLevel(int l)
-	{
-		level < 11;
-		level = l;
-	}
-	void damage(int hit)
-	{
-		health -= hit;
-		cout << cmd << "¥‘¿« ≥≤¿∫ Hp:" << health << endl;
-	}
-
-	void displayStatus()
-	{
-		cout << "¿Ã∏ß:" << cmd << endl;
-		cout << "¡˜æ˜:∞≥πﬂ≥Îøπ" << endl;
-		cout << "∑π∫ß:" << level << endl;
-		cout << "Exp:" << experience << "/100"<<endl;
-		cout << "√º∑¬:" << health << '/' << maxHealth << endl;
-		cout << "∞¯∞›∑¬" << attack << endl;
-		cout << "∞ÒµÂ:" << gold << endl;
-	}
-	int getmaxHealth()
-	{
-		return maxHealth;
-	}
-
-	int getHealth()
-	{
-		return health;
-	}
-
-	int getExperience()
-	{
-		experience < 101;
-		return experience;
-	}
-	int getLevel()
-	{
-		level < 11;
-		return level;
-	}
-	int getGold()
-	{
-		return gold;
-	}
-	string getName()
-	{
-		return cmd;
-	}
-
-
-		
-
-
-	
+    ~Character();
 };
 
 
-#endif CHARACTER_H_
-
+#endif
