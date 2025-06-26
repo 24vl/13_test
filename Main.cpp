@@ -1,11 +1,9 @@
 ﻿#include "GameManager.h"
-#include "Shop.h"
-#include <iostream>
-#include <ctime>
-#include <cstdlib>
 
 using namespace std;
 
+
+// 인트로 // 수정 요망
 void Intro()
 {
 	system("color 09");
@@ -22,6 +20,25 @@ void Intro()
 	system("cls");
 }
 
+// 닉네임 생성 함수 // GameManager로 옮기기
+void ifnVoidName(Character* player, string& name)
+{
+	cout << "이름을 정해주세요." << endl;
+	getline(cin, name);
+	player->setName(name);
+
+	if (player->getName() == "")
+	{
+		cout << "이름은 공백이 될 수 없습니다." << endl;
+		system("pause");
+		system("cls");
+		return ifnVoidName(player, name);
+	}
+
+	return;
+}
+
+
 int main()
 {
 	// 메모리 누수 체크
@@ -33,29 +50,23 @@ int main()
 
 	Intro(); // 인트로 화면
 
-	GameManager m; // GameManager 호출
+	GameManager manager; // GameManager 객체 생성
+	Character player; // Character 객체 생성
 	string name; // 캐릭터 이름 변수
 
-	cout << "이름을 지어주세요." << endl;
-	cin >> name;
-	Character c(name); // 생성자로 닉네임 입력
-	if (c.getName() == "") // 닉네임 공백 방지
-	{
-		cout << "닉네임은 공백으로 할 수 없습니다." << endl;
-		return main();
-	}
+	ifnVoidName(&player, name);
 
 	system("cls"); // 로그 클리어
-	c.displayStatus(); // 초기 능력치 출력
+	player.displayStatus(); // 초기 능력치 출력
 	cout << endl;
 	
 	system("pause"); // 아무 키 입력 시 계속
 	system("cls"); // 로그 클리어
-	m.battle(&c); // 실행 최초 강제 전투
+	manager.battle(&player); // 실행 최초 강제 전투
 
-	m.menu(&c); // 메뉴 루프
+	manager.menu(&player); // 게임 루프
 
-	return 0;
+	return 0; // 프로그램 종료
 }
 
 // *** read me 수정 [Git]
@@ -84,11 +95,13 @@ int main()
 //
 // ** 대사 수정
 // 
-// V Log class 제작
+// V *** Log class 제작
 // 전투 ? 아이템 사용 ? 골드 획득 ? ” 중요한 이벤트는 콘솔에 쭉 기록됩니다.
 // 로그를 통해 오늘 어떤 몬스터를 몇 마리 눕혔는지~한 눈에 확인 가능!
 //
-// V 메뉴 선택 string 입력 오류
+// V *** 메뉴 선택 string 입력 오류
+//
+// ** 헤더 namespace 삭제, 수정
 
 
 //필수 체크
@@ -129,3 +142,9 @@ int main()
 //2. 체력 / 공격력 증가 정상 반영
 //Normal
 //필수
+// 
+//최대 레벨 V
+//보스전 테스트
+//1. 레벨 10 도달
+//2. 보스 몬스터 자동 소환 → 승리 시 게임 클리어
+//도전

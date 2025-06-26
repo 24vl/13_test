@@ -1,16 +1,20 @@
 ﻿#include "Shop.h"
 
+//--- 생성자
 Shop::Shop()
 {
+	// 상점 입장 대사
 	cout << "상점에 어서오세요!" << endl;
 }
 
+// 판매 목록 // 벡터 사용 X 하드 코딩했음
 void Shop::displayItems()
 {
 	cout << "\n1. 초코바(회복 + 50) : 10 골드" << endl;
 	cout << "2. 에너지드링크(공격력 + 10) : 15 골드\n" << endl;
 }
 
+// 아이템 구매
 void Shop::buyItem(int index, Character* player)
 {
 	if (index == 1) // 체력 포션 10골드
@@ -49,8 +53,10 @@ void Shop::buyItem(int index, Character* player)
 	}
 }
 
+// 아이템 판매
 void Shop::sellItem(int index, Character* player)
 {
+	// 벡터 인덱스 범위 오류 방지
 	if (index >= player->getInventory().size() || index < 0)
 	{
 		cout << "오류 발생" << endl;
@@ -73,7 +79,9 @@ void Shop::sellItem(int index, Character* player)
 	}
 }
 
+//--- 소멸자
 Shop::~Shop()
 {
+	// 상점 퇴장 대사
 	cout << "이용해 주셔서 감사합니다~" << endl;
 }

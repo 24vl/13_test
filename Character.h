@@ -22,7 +22,7 @@ private:
     string name;
     int level = 1;
     int experience = 0;
-    int attack = 300;
+    int attack = 30;
     int health = 200;
     int maxHealth = 200;
     int gold = 0;
@@ -32,7 +32,7 @@ private:
     
 
 public:
-    Character(string name);
+    Character(string n = "player") : name(n) {}
 
     string getName();
     int getLevel();

@@ -31,7 +31,7 @@ private:
 	int effect;
 
 public:
-	HealthPotion() : name("초코바"), effect(50) {}
+	HealthPotion();
 	string getName();
 	void use(Character* character);
 	~HealthPotion();
@@ -44,7 +44,7 @@ private:
 	int effect;
 
 public:
-	AttackBoost() : name("에너지드링크"), effect(10) {}
+	AttackBoost();
 	string getName();
 	void use(Character* character);
 	~AttackBoost();

@@ -2,18 +2,13 @@
 
 class Monster;
 
-Monster* GameManager::generateMonster(int level) // level = Character.getLevel()
+// 몬스터 소환 // 동적 할당
+Monster* GameManager::generateMonster(int level) // level = Character->getLevel()
 {
     if (level <= 3)
     {
-        if (rand() % 2 == 0)
-        { 
-            return new Student1;
-        }
-        else
-        {
-            return new Student2();
-        }
+        if (rand() % 2 == 0) { return new Student1; }
+        else { return new Student2(); }
 
     }
     else if (level > 3 && level <= 6)
@@ -22,82 +17,79 @@ Monster* GameManager::generateMonster(int level) // level = Character.getLevel()
     }
     else if (level > 6 && level <= 9)
     {
-        if (rand() % 2 == 0)
-        {
-            return new Student4;
-        }
-        else
-        {
-            return new Student5;
-        }
+        if (rand() % 2 == 0) { return new Student4; }
+        else { return new Student5; }
     }
     else // 보스 전투
     {
-        system("color 0c");
-        cout << " ____                               __      __      __     " << endl;
-        cout << "/\\  _`\\                            /\\ \\    /\\ \\    /\\ \\    " << endl;
-        cout << "\\ \\ \\L\\ \\    ___     ____    ____  \\ \\ \\   \\ \\ \\   \\ \\ \\   " << endl;
-        cout << " \\ \\  _ <'  / __`\\  /',__\\  /',__\\  \\ \\ \\   \\ \\ \\   \\ \\ \\  " << endl;
-        cout << "  \\ \\ \\L\\ \\/\\ \\L\\ \\/\\__, `\\/\\__, `\\  \\ \\_\\   \\ \\_\\   \\ \\_\\ " << endl;
-        cout << "   \\ \\____/\\ \\____/\\/____/\\/____/   \\/\\_\\   \\/\\_\\   \\/\\_\\" << endl;
-        cout << "    \\/___/  \\/___/  \\/___/  \\/___/     \\/_/    \\/_/    \\/_/" << endl;
-        cout << "                                                           " << endl;
-        cout << "                                                          " << endl;
-        Sleep(1500); // 1500ms
-
+        bossAppears();
         return new Student6;
     }
 }
 
+//--- 전투
 void GameManager::battle(Character* player)
 {
     system("color 0e");
-    Monster* monster;
-    monster = generateMonster(player->getLevel());
+    // 몬스터 동적 할당
+    Monster* monster = generateMonster(player->getLevel());
+    // 몬스터 출현 대사
     cout << "!!!!! 튜터실에 " << monster->getName();
     cout << "이 나타났다 !!!!!\n" << endl;
     monster->displayStatus();
 
-    while (true)
+    while (true) // 몬스터나 캐릭터 사망 전까지 반복
     {
-        //Sleep(3000); // 3초마다 턴 종료 자동 전투
-        system("pause");
-        system("color 07");
+        //Sleep(3000); // 3초마다 자동 전투
+        system("pause"); // 계속하려면 아무 키
+
+        system("color 07"); // 배경색 검, 글자색 흰
         system("cls");
 
-        player->skillCharacter();
+        cout << player->getName() << "의 공격!" << endl;
+        player->skillCharacter(); // 플레이어의 공격!
+        cout << "\n";
+        
+        // 몬스터 피격 // 몬스터 사망 시 조건문 실행
         if (monster->takeDamage(player->getAttack()))
         {
             int r = rand();
-            if ((r % 100) < 30)
+            if ((r % 100) < 30) // 30퍼센트 확률로 아이템 획득
             {
-                if (r % 2 == 0)
+                if (r % 2 == 0) // 의 절반의 확률
                 {
                     Item* h = new HealthPotion;
                     player->getItem(h);
-                    cout << h->getName() << " 획득!" << endl;
                 }
-                else
+                else // 나머지 절반
                 {
                     Item* a = new AttackBoost;
                     player->getItem(a);
-                    cout << a->getName() << " 획득!" << endl;
                 }
             }
+
+            // 경험치 획득
             player->setExp(player->getExp() + 50);
+            // 골드 획득
             player->setGold(player->getGold() + 10 * (r % 2 + 1));
+            // 처치한 몬스터 수 증가
             player->setKillCount(player->getKillCount() + 1);
+            // 처치한 몬스터 기록
             player->insertKillLog(monster->getName());
+            // 조건에 따라 레벨 증가
             player->levelUp();
 
+            // 보스 몬스터일 경우 엔딩, 게임 종료
             if (monster->getName() == "장재근 학생") { end = true; }
 
-            delete monster;
-            monster = nullptr;
-            break;
+            delete monster; // 몬스터 동적 할당 해제
+            monster = nullptr; // nullptr로 댕글링 포인터 방지
+            break; // 몬스터가 사망했으니 전투 종료
         }
         
-        monster->skillMonster();
+        cout << monster->getName() << "의 공격!" << endl;
+        monster->skillMonster(); // 몬스터의 공격!
+        cout << "\n";
         if (player->takeDamage(monster->getAttack()))
         {
             player->resetStatus(); // 사망 시 리셋
@@ -106,18 +98,24 @@ void GameManager::battle(Character* player)
             break;
         }
 
-        player->useItem(0); // 아이템 사용 로직 미구현
+        if (player->getHealth() <= 100) // 체력이 낮을 경우 아이템
+        {
+            cout << "\"도핑이 필요해...\"" << endl;
+            player->useItem(0);
+        }
+
     }
 }
 
+//--- 캐릭터 인벤토리 출력
 void GameManager::displayInventory(Character* player)
 {
-    if (!player->getInventory().empty())
+    if (!player->getInventory().empty()) // 인벤토리가 비었는지 확인
     {
         cout << " = Inventory = " << endl;
         for (int i = 0; i < player->getInventory().size(); i++)
         {
-            if (player->getInventory()[i] != nullptr)
+            if (player->getInventory()[i] != nullptr) // nullptr 방지
             {
                 cout << i << ". ";
                 cout << player->getInventory()[i]->getName() << endl;
@@ -125,70 +123,78 @@ void GameManager::displayInventory(Character* player)
         }
         cout << "---------------" << endl;
     }
-    else
+    else // 비었을 경우, 보험
     {
         cout << " = Inventory = " << endl;
         cout << "---------------" << endl;
     }
 }
 
+//--- 게임 메뉴
 void GameManager::menu(Character* player)
 {
-    int number;
+    int choice; // Enum, switch-case 변경 가능
 
     while (true)
     {
-        system("pause");
-        if (end) 
+        system("pause"); // 다른 행동이 끝날 때의 퍼즈를 대체
+
+        if (end) // 보스몬스터 처치 확인
         { 
             ending();
             break; 
         }
+
+        // 메뉴 화면, 캐릭터 능력치, 인벤토리 출력
         system("cls");
-        cout << "1.전투  2.상점  3.로그  4.종료\n\n";
+        cout << "1.전투  2.상점  3.로그  4.종료\n\n"; // 변경 요망
         player->displayStatus();
         cout << "\n";
         displayInventory(player);
         cout << "\n선택 : ";
-        cin >> number;
-        if (number == 1) // 전투
+ 
+        cin >> choice;
+        if (choice == 1) // 전투
         {
             system("cls");
             battle(player);
         }
-        else if (number == 2) // 상점
+        else if (choice == 2) // 상점
         {
             system("cls");
             Shop shop;
             while (true)
             {
+                // 상점 화면 출력, 캐릭터 소지금, 인벤토리 출력
                 system("pause");
                 system("cls");
                 cout << "소지 골드 : " << player->getGold() << endl;
                 displayInventory(player);
                 shop.displayItems();
                 cout << "1.구매 2.판매 3.떠나기" << endl;
-                cin >> number;
-                if (number == 1) // 구매
+
+                cin >> choice;
+                if (choice == 1) // 구매
                 {
                     cout << "구매할 아이템 : ";
-                    cin >> number;
-                    shop.buyItem(number, player);
+                    cin >> choice;
+                    shop.buyItem(choice, player);
                     continue;
                 }
-                else if (number == 2) // 판매
+                else if (choice == 2) // 판매
                 {
                     cout << "판매할 아이템 : ";
-                    cin >> number;
-                    shop.sellItem(number, player);
+                    cin >> choice;
+                    shop.sellItem(choice, player);
                     continue;
                 }
-                else if (number == 3) // 떠나기
+                else if (choice == 3) // 떠나기
                 {
                     break;
                 }
                 else
                 {
+                    // cin.fail 해결
                     cin.clear();
                     string dummy;
                     getline(cin, dummy);
@@ -198,18 +204,18 @@ void GameManager::menu(Character* player)
                 }
             }
         }
-        else if (number == 3)
+        else if (choice == 3) // 몬스터 처치 로그 출력
         {
             displayLog(player);
             continue;
         }
-        else if (number == 4)
+        else if (choice == 4) // 게임 종료
         {
             system("cls");
             cout << "게임을 종료합니다." << endl;
             break;
         }
-        else
+        else // cin.fail
         {
             system("cls");
             cin.clear();
@@ -221,6 +227,7 @@ void GameManager::menu(Character* player)
     }
 }
 
+//--- 처치한 몬스터 출력
 void GameManager::displayLog(Character* player)
 {
     cout << "\n    내준 과제\n";
@@ -232,7 +239,24 @@ void GameManager::displayLog(Character* player)
     cout << "\n-----------------\n" << endl;
 }
 
-void GameManager::ending() //엔딩
+//--- 보스 출현 대사
+void GameManager::bossAppears()
+{
+    system("color 0c");
+    cout << " ____                               __      __      __     " << endl;
+    cout << "/\\  _`\\                            /\\ \\    /\\ \\    /\\ \\    " << endl;
+    cout << "\\ \\ \\L\\ \\    ___     ____    ____  \\ \\ \\   \\ \\ \\   \\ \\ \\   " << endl;
+    cout << " \\ \\  _ <'  / __`\\  /',__\\  /',__\\  \\ \\ \\   \\ \\ \\   \\ \\ \\  " << endl;
+    cout << "  \\ \\ \\L\\ \\/\\ \\L\\ \\/\\__, `\\/\\__, `\\  \\ \\_\\   \\ \\_\\   \\ \\_\\ " << endl;
+    cout << "   \\ \\____/\\ \\____/\\/____/\\/____/   \\/\\_\\   \\/\\_\\   \\/\\_\\" << endl;
+    cout << "    \\/___/  \\/___/  \\/___/  \\/___/     \\/_/    \\/_/    \\/_/" << endl;
+    cout << "                                                           " << endl;
+    cout << "                                                          \n" << endl;
+    Sleep(1500); // 1500ms // 1.5초
+}
+
+//--- 엔딩 // 수정 요망
+void GameManager::ending()
 {
     system("cls");
     cout << "게임을 플레이 해 주셔서 감사합니다!" << endl;
