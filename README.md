@@ -131,7 +131,7 @@
 
 
 ```
-1**3_PROJECT
+1IDIOT3_PROJECT
 ┣ source
 ┃ ┣ Main.cpp // 메인 함수 구현
 ┃ ┣ GameManager.cpp // 전반적인 프로그램 관리
