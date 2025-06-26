@@ -95,7 +95,7 @@
 |:---:|:---:|:---:|
 |김지원|팀장|Monster, README 작성|
 |전형준|부팀장|Item, GameManager, Ending|
-|장재근|팀원|Item, GameManager, Shop, 모든 오류 해결|
+|장재근|팀원|Item, GameManager, Shop, 오류 해결|
 |성준모|팀원|Monster, Monster 컨셉 및 대사, PPT|
 |최선호|팀원|Character, 발표, QA 테스트|
 |김성빈|팀원|Character, 밸런스 구상, Character 대사|
