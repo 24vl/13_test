@@ -34,10 +34,8 @@ void Character::displayStatus()
     cout << "LV:" << level << " (" << experience << "%)" << endl;
     cout << "체력:" << health << "/" << maxHealth << endl;
     cout << "공격력:" << attack << endl;
-
     cout << "Gold: " << gold << endl;
     cout << "kill: " << killCount << endl;
-
 }
 // 레벨 업
 void Character::levelUp()

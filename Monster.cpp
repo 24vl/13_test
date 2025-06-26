@@ -209,7 +209,7 @@ void Boss::skillMonster()
 	}
 	else if (r == 3)
 	{
-		cout << "\"가장 듣기 싫은 말\"" << endl;
+		cout << "\"어..이건 뭔가요? 모르겠으니, 알려주세요.\"" << endl;
 	}
 	else
 	{

@@ -47,7 +47,6 @@ void GameManager::battle(Character* player)
         system("color 07"); // 배경색 검, 글자색 흰
         system("cls");
 
-        cout << player->getName() << "의 공격!" << endl;
         player->skillCharacter(); // 플레이어의 공격!
         cout << "\n";
         
@@ -273,7 +272,7 @@ void GameManager::intro()
     cout << "      \\ \\ \\     \\_\\ \\__   \\ \\ \\_\\ \\    \\_\\ \\__   \\ \\ \\_\\ \\     \\ \\ \\   /\\ \\L\\ \\ " << endl;
     cout << "       \\ \\_\\    /\\_____\\   \\ \\____/    /\\_____\\   \\ \\_____\\     \\ \\_\\  \\ \\____/" << endl;
     cout << "        \\/_/    \\/_____/    \\/___/     \\/_____/    \\/_____/      \\/_/   \\/___/" << endl;
-    cout << "\n                           튜터의 모험 : 야근 방어전 \n" << endl;
+    cout << "\n                            T U T O R : 야근 방어전 \n" << endl;
     system("pause");
     system("color 07");
     system("cls");
