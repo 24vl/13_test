@@ -24,7 +24,7 @@ public:
 class Student1 : public Monster
 {
 public:
-	Student1() : Monster("성준모 학생", 30, 130) {}
+	Student1() : Monster("성준모 학생", 20, 140) {}
 	bool takeDamage(int damage);
 	void skillMonster();
 };
@@ -40,7 +40,7 @@ public:
 class Student3 : public Monster
 {
 public:
-	Student3() : Monster("김성빈 학생", 70, 200) {}
+	Student3() : Monster("김성빈 학생", 60, 140) {}
 	bool takeDamage(int damage);
 	void skillMonster();
 };
@@ -48,7 +48,7 @@ public:
 class Student4 : public Monster
 {
 public:
-	Student4() : Monster("최선호 학생", 100, 300) {}
+	Student4() : Monster("최선호 학생", 40, 200) {}
 	bool takeDamage(int damage);
 	void skillMonster();
 };
@@ -56,7 +56,7 @@ public:
 class Student5 : public Monster
 {
 public:
-	Student5() : Monster("전형준 학생", 80, 400) {}
+	Student5() : Monster("전형준 학생", 80, 300) {}
 	bool takeDamage(int damage);
 	void skillMonster();
 };
@@ -64,7 +64,15 @@ public:
 class Student6 : public Monster
 {
 public:
-	Student6() : Monster("장재근 학생", 150, 800) {}
+	Student6() : Monster("장재근 학생", 60, 400) {}
+	bool takeDamage(int damage);
+	void skillMonster();
+};
+
+class Boss : public Monster
+{
+public:
+	Boss() : Monster("실험체 '멍청멍청'", 100, 800) {}
 	bool takeDamage(int damage);
 	void skillMonster();
 };

@@ -30,11 +30,14 @@ void Character::setKillCount(int newCount) { killCount = newCount; }
 // 상태창 출력
 void Character::displayStatus()
 {
-    cout << " - " << name << " - ";
-    cout << " LV:" << level << " (" << experience << "%)" << endl;
-    cout << "HP:" << health << "/" << maxHealth;
-    cout << "  AD:" << attack << endl;
-    cout << "Gold:" << gold << "  kill:" << killCount << endl;
+    cout << "------ " << name << " ------" << endl;
+    cout << "LV:" << level << " (" << experience << "%)" << endl;
+    cout << "체력:" << health << "/" << maxHealth << endl;
+    cout << "공격력:" << attack << endl;
+
+    cout << "Gold: " << gold << endl;
+    cout << "kill: " << killCount << endl;
+
 }
 // 레벨 업
 void Character::levelUp()
@@ -131,15 +134,24 @@ bool Character::takeDamage(int damage)
     {
         health = 0;
         // 사망 대사
-        cout << "다시 돌아오겠다.." << endl;
-        cout << " - Game Over -" << endl;
+        std::cout << 
+R"(
+#### ###  ####  #### ##   ######  #### ###### ######
+ ##   #  ##  ##  ##  #     ##  ##  ##   ##  #  ##  ##
+  ## #   ##  ##  ##  #     ##  ##  ##   ##     ##  ##
+  ###    ##  ##  ##  #     ##  ##  ##   ###    ##  ##
+   ##    ##  ##  ##  #     ##  ##  ##   ##     ##  ##
+   ##    ##  ##  ##  #     ##  ##  ##   ##  #  ##  ##
+  ####    ####    ###     ######  #### ###### ######
+)" 
+        << std::endl;
         return true;
     }
     else
     {
         // 피격 대사
-        cout << "남은 체력 : " << health << endl;
         cout << "\"으윽! 과제를 더 내주겠다!\"" << endl;
+        cout << "[남은 체력 : " << health << "]" << endl;
         return false;
     }
 }

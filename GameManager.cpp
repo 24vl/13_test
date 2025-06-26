@@ -13,17 +13,18 @@ Monster* GameManager::generateMonster(int level) // level = Character->getLevel(
     }
     else if (level > 3 && level <= 6)
     {
-        return new Student3;
+        if (rand() % 2 == 0) { return new Student3; }
+        else { return new Student4; }
     }
     else if (level > 6 && level <= 9)
     {
-        if (rand() % 2 == 0) { return new Student4; }
-        else { return new Student5; }
+        if (rand() % 2 == 0) { return new Student5; }
+        else { return new Student6; }
     }
     else // 보스 전투
     {
         bossAppears();
-        return new Student6;
+        return new Boss;
     }
 }
 
@@ -80,14 +81,13 @@ void GameManager::battle(Character* player)
             player->levelUp();
 
             // 보스 몬스터일 경우 엔딩, 게임 종료
-            if (monster->getName() == "장재근 학생") { end = true; }
+            if (monster->getName() == "실험체 '멍청멍청'") { end = true; }
 
             delete monster; // 몬스터 동적 할당 해제
             monster = nullptr; // nullptr로 댕글링 포인터 방지
             break; // 몬스터가 사망했으니 전투 종료
         }
         
-        cout << monster->getName() << "의 공격!" << endl;
         monster->skillMonster(); // 몬스터의 공격!
         cout << "\n";
         if (player->takeDamage(monster->getAttack()))
@@ -98,12 +98,8 @@ void GameManager::battle(Character* player)
             break;
         }
 
-        if (player->getHealth() <= 100) // 체력이 낮을 경우 아이템
-        {
-            cout << "\"도핑이 필요해...\"" << endl;
-            player->useItem(0);
-        }
-
+        cout << "\"도핑이 필요해...\"" << endl;
+        player->useItem(0);
     }
 }
 
@@ -239,19 +235,63 @@ void GameManager::displayLog(Character* player)
     cout << "\n-----------------\n" << endl;
 }
 
+//--- 닉네임 생성
+void GameManager::ifnVoidName(Character* player, string name)
+{
+    cout << "이름을 정해주세요." << endl;
+    getline(cin, name);
+    player->setName(name);
+
+    if (player->getName() == "")
+    {
+        cout << "이름은 공백이 될 수 없습니다." << endl;
+        cout << "다시 입력해주세요." << endl;
+        system("pause");
+        system("cls");
+        return ifnVoidName(player, name);
+    }
+
+    return;
+}
+
+//--- 인트로
+void GameManager::intro()
+{
+    int r = rand() % 7;
+    if (r == 0) { system("color 09"); }
+    else if (r == 1) { system("color 0A"); }
+    else if (r == 2) { system("color 0B"); }
+    else if (r == 3) { system("color 0C"); }
+    else if (r == 4) { system("color 0D"); }
+    else if (r == 5) { system("color 0E"); }
+    else { system("color 0F"); }
+
+    cout << "\n      _      ______      ____       ______      _____       ______      __     " << endl;
+    cout << "    /' \\    /\\__  _\\    /\\  _`\\    /\\__  _\\    /\\  __`\\    /\\__  _\\   /'__`\\ " << endl;
+    cout << "   /\\_, \\   \\/_/\\ \\/    \\ \\ \\/\\ \\  \\/_/\\ \\/    \\ \\ \\/\\ \\   \\/_/\\ \\/  /\\_\\L\\ \\ " << endl;
+    cout << "   \\/_/\\ \\     \\ \\ \\     \\ \\ \\ \\ \\    \\ \\ \\     \\ \\ \\ \\ \\     \\ \\ \\  \\/_/_\\_<_" << endl;
+    cout << "      \\ \\ \\     \\_\\ \\__   \\ \\ \\_\\ \\    \\_\\ \\__   \\ \\ \\_\\ \\     \\ \\ \\   /\\ \\L\\ \\ " << endl;
+    cout << "       \\ \\_\\    /\\_____\\   \\ \\____/    /\\_____\\   \\ \\_____\\     \\ \\_\\  \\ \\____/" << endl;
+    cout << "        \\/_/    \\/_____/    \\/___/     \\/_____/    \\/_____/      \\/_/   \\/___/" << endl;
+    cout << "\n                           튜터의 모험 : 야근 방어전 \n" << endl;
+    system("pause");
+    system("color 07");
+    system("cls");
+}
+
 //--- 보스 출현 대사
 void GameManager::bossAppears()
 {
     system("color 0c");
-    cout << " ____                               __      __      __     " << endl;
-    cout << "/\\  _`\\                            /\\ \\    /\\ \\    /\\ \\    " << endl;
-    cout << "\\ \\ \\L\\ \\    ___     ____    ____  \\ \\ \\   \\ \\ \\   \\ \\ \\   " << endl;
-    cout << " \\ \\  _ <'  / __`\\  /',__\\  /',__\\  \\ \\ \\   \\ \\ \\   \\ \\ \\  " << endl;
-    cout << "  \\ \\ \\L\\ \\/\\ \\L\\ \\/\\__, `\\/\\__, `\\  \\ \\_\\   \\ \\_\\   \\ \\_\\ " << endl;
-    cout << "   \\ \\____/\\ \\____/\\/____/\\/____/   \\/\\_\\   \\/\\_\\   \\/\\_\\" << endl;
-    cout << "    \\/___/  \\/___/  \\/___/  \\/___/     \\/_/    \\/_/    \\/_/" << endl;
-    cout << "                                                           " << endl;
-    cout << "                                                          \n" << endl;
+    std::cout << " ____                               __      __     " << std::endl;
+    std::cout << "/\\  _`\\                            /\\ \\    /\\ \\    " << std::endl;
+    std::cout << "\\ \\ \\L\\ \\    ___     ____    ____  \\ \\ \\   \\ \\ \\   " << std::endl;
+    std::cout << " \\ \\  _ <'  / __`\\  /',__\\  /',__\\  \\ \\ \\   \\ \\ \\  " << std::endl;
+    std::cout << "  \\ \\ \\L\\ \\/\\ \\L\\ \\/\\__, `\\/\\__, `\\  \\ \\_\\   \\ \\_\\ " << std::endl;
+    std::cout << "   \\ \\____/\\ \\____/\\/\\____/\\/\\____/   \\/\\_\\   \\/\\_\\" << std::endl;
+    std::cout << "    \\/___/  \\/___/  \\/___/  \\/___/     \\/_/    \\/_/" << std::endl;
+    std::cout << "                                                   " << std::endl;
+    std::cout << "                                                   " << std::endl;
     Sleep(1500); // 1500ms // 1.5초
 }
 
@@ -259,5 +299,51 @@ void GameManager::bossAppears()
 void GameManager::ending()
 {
     system("cls");
-    cout << "게임을 플레이 해 주셔서 감사합니다!" << endl;
+    std::cout << " ____                 __      __      __      " << std::endl;
+    std::cout << "/\\  _`\\              /\\ \\    /\\ \\    /\\ \\    " << std::endl;
+    std::cout << "\\ \\ \\L       ___     \\_\\ \\   \\ \\ \\   \\ \\ \\   " << std::endl;
+    std::cout << " \\ \\  _\\   /' _ `\\   /'_` \\   \\ \\ \\   \\ \\ \\  " << std::endl;
+    std::cout << "  \\ \\ \\__  /\\ \\/\\ \\ /\\ \\L\\ \\   \\ \\_\\   \\ \\_\\ " << std::endl;
+    std::cout << "   \\ \\____/\\ \\_\\ \\_\\\\ \\___,_\\   \\/\\_\\   \\/\\_\\" << std::endl;
+    std::cout << "    \\/___/  \\/_/\\/_/ \\/__,_ /    \\/_/    \\/_/" << std::endl;
+    Sleep(3000);
+    system("cls");
+    cout << "- special thanks -\n" << endl;
+    Sleep(1000);
+    cout << " 김어진 매니저님" << endl;
+    Sleep(500);
+    cout << " 양주영 매니저님" << endl;
+    Sleep(500);
+    cout << " 손주연 매니저님" << endl;
+    Sleep(500);
+    cout << " 이지원 매니저님" << endl;
+    Sleep(500);
+    cout << "\n";
+    cout << " 강창민 튜터님" << endl;
+    Sleep(500);
+    cout << " 서화성 튜터님" << endl;
+    Sleep(500);
+    cout << " 최민성 튜터님" << endl;
+    Sleep(500);
+    cout << " 조호영 튜터님" << endl;
+    Sleep(500);
+    cout << " 박정식 튜터님" << endl;
+    Sleep(500);
+    cout << " 박경호 튜터님" << endl;
+    Sleep(500);
+    cout << " 정영훈 튜터님" << endl;
+    Sleep(500);
+    cout << " 한창욱 튜터님" << endl;
+    Sleep(500);
+    cout << " 이  삭 튜터님" << endl;
+    Sleep(4000);
+    system("cls");
+    system("color 0e");
+    cout << "게임을 플레이 해 주셔서 감사합니다!\n" << endl;
+    cout << "\n- 내배캠 Unreal 13조 -\n" << endl;
+    cout << "   김지원   전형준\n" << endl;
+    cout << "   김성빈   성준모\n" << endl;
+    cout << "   장재근   최선호\n" << endl;
+    cout << "\n\n\n\n\n\n\n\n" << endl;
+    
 }

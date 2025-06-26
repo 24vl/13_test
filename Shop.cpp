@@ -13,7 +13,7 @@ Shop::Shop()
 void Shop::displayItems()
 {
 	cout << "\n1. 초코바(회복 + 50) : 10 골드" << endl;
-	cout << "2. 에너지드링크(공격력 + 10) : 15 골드\n" << endl;
+	cout << "2. 에너지드링크(공격력 + 5) : 15 골드\n" << endl;
 }
 
 // 아이템 구매
