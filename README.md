@@ -77,7 +77,7 @@
 - C++ 17 지원
 - 빌드 시스템: MSVC (Debug / Release)
       
- ### - 빌드 실행 방법 ⚙
+ ### - 실행 방법 ⚙
 - main.cpp에서 프로그램 시작
 - Visual Studio 기준: Ctrl + F5 또는 디버깅 없이 시작
 
@@ -97,8 +97,8 @@
 |전형준|부팀장|Item, GameManager, Ending|
 |장재근|팀원|Item, GameManager, Shop, 오류 해결|
 |성준모|팀원|Monster, Monster 컨셉 및 대사, PPT|
-|최선호|팀원|Character, 발표, QA 테스트|
-|김성빈|팀원|Character, 밸런스 구상, Character 대사|
+|최선호|팀원|Character, 여러 기능 추가, QA 게임 테스트|
+|김성빈|팀원|Character, Character 대사, 밸런스 구상, 발표|
 
 
 
