@@ -93,7 +93,7 @@
 
 |이름|역할|담당|
 |:---:|:---:|:---:|
-|김지원|팀장|Monster, README 작성|
+|김지원|팀장|Monster, README 작성, UI 디자인|
 |전형준|부팀장|Item, GameManager, Ending|
 |장재근|팀원|Item, GameManager, Shop, 오류 해결|
 |성준모|팀원|Monster, Monster 컨셉 및 대사, PPT|
